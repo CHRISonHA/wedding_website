@@ -14,6 +14,17 @@ Einfache HTML-Webseite für die Hochzeitseinladung.
 - **[Datum]** bei Rückmeldung – z. B. 1. Mai 2026
 - Optional: Kontakt oder Link zur Rückmeldung (RSVP)
 
+## Passwortschutz
+
+Die Einladung ist durch eine Passwortabfrage geschützt. Das Passwort wird **nicht im Quelltext** gespeichert, sondern nur als SHA-256-Hash (sicher für öffentliche Repos).
+
+- Groß-/Kleinschreibung spielt keine Rolle.
+- Nach erfolgreicher Eingabe bleibt die Seite in derselben Browser-Sitzung freigegeben (sessionStorage).
+
+**Passwort ändern:** Neuen Hash berechnen (z. B. mit Node:  
+`node -e "console.log(require('crypto').createHash('sha256').update('DEIN_NEUES_PASSWORT').digest('hex'))"`),  
+dann in `index.html` den Wert von `EXPECTED_HASH` ersetzen.
+
 ## Ansehen
 
 - **Lokal:** `index.html` im Browser öffnen (Doppelklick oder Rechtsklick → „Öffnen mit“ → Browser).

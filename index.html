@@ -97,9 +97,89 @@
       color: var(--farbe-akzent);
       opacity: 0.9;
     }
+
+    /* Passwort-Overlay */
+    .pass-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--farbe-hell);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 1rem;
+    }
+
+    .pass-overlay.versteckt {
+      display: none;
+    }
+
+    .pass-form {
+      text-align: center;
+      max-width: 280px;
+    }
+
+    .pass-form label {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      color: var(--farbe-text);
+    }
+
+    .pass-form input {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      border: 1px solid var(--farbe-akzent-hell);
+      border-radius: 4px;
+      background: #fff;
+    }
+
+    .pass-form input:focus {
+      outline: none;
+      border-color: var(--farbe-akzent);
+    }
+
+    .pass-form button {
+      margin-top: 1rem;
+      padding: 0.5rem 1.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      color: #fff;
+      background: var(--farbe-akzent);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .pass-form button:hover {
+      background: #7a6349;
+    }
+
+    .pass-fehler {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: #a44;
+      display: none;
+    }
+
+    .pass-fehler.sichtbar {
+      display: block;
+    }
   </style>
 </head>
 <body>
+  <div class="pass-overlay" id="pass-overlay" aria-live="polite">
+    <form class="pass-form" id="pass-form" autocomplete="off">
+      <label for="pass-input">Bitte Passwort eingeben</label>
+      <input type="password" id="pass-input" name="pass" placeholder="Passwort" required>
+      <button type="submit">Öffnen</button>
+      <p class="pass-fehler" id="pass-fehler">Falsches Passwort.</p>
+    </form>
+  </div>
+
   <main class="karte">
     <p class="zeile">Wir freuen uns, euch einzuladen</p>
     <h1>Hochzeitseinladung</h1>
@@ -118,5 +198,55 @@
     </p>
     <footer>Mit lieben Grüßen</footer>
   </main>
+
+  <script>
+    (function () {
+      var STORAGE_KEY = 'wedding_guest';
+      // Erwarteter SHA-256-Hash (Secret nicht im Quelltext)
+      var EXPECTED_HASH = 'afd1a8fffb87f7a091c924e0b851f41be19d55450cf7946a5f03cc02221b6481';
+
+      var overlay = document.getElementById('pass-overlay');
+      var form = document.getElementById('pass-form');
+      var input = document.getElementById('pass-input');
+      var fehler = document.getElementById('pass-fehler');
+
+      function bufferToHex(buffer) {
+        return Array.from(new Uint8Array(buffer))
+          .map(function (b) { return ('0' + b.toString(16)).slice(-2); })
+          .join('');
+      }
+
+      function sha256Hex(text) {
+        return crypto.subtle
+          .digest('SHA-256', new TextEncoder().encode(text))
+          .then(bufferToHex);
+      }
+
+      function freigeben() {
+        try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+        overlay.classList.add('versteckt');
+      }
+
+      if (sessionStorage.getItem(STORAGE_KEY) === '1') {
+        freigeben();
+        return;
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        fehler.classList.remove('sichtbar');
+        var wert = (input.value || '').trim().toLowerCase();
+        sha256Hex(wert).then(function (hash) {
+          if (hash === EXPECTED_HASH) {
+            freigeben();
+          } else {
+            fehler.classList.add('sichtbar');
+            input.value = '';
+            input.focus();
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
