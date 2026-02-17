@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ablauf – Hochzeit Anne & Chris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --beige: #f2ede5;
+      --beige-dunkel: #e5dfd4;
+      --sage: #8a9b7a;
+      --sage-dunkel: #6b7a5d;
+      --text: #3d3d3d;
+      --text-hell: #5a5a5a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      color: var(--text);
+      background: var(--beige);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      line-height: 1.6;
+    }
+    .karte {
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      padding: 2.5rem 2rem;
+      background: var(--beige);
+      position: relative;
+    }
+    .karte .script {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2rem, 6vw, 2.75rem);
+      color: var(--text);
+      margin: 0;
+      line-height: 1.2;
+    }
+    .karte .sans {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--text-hell);
+      margin: 0.25rem 0 0;
+    }
+    .text {
+      font-size: 0.9rem;
+      margin: 1.25rem auto;
+      max-width: 38ch;
+      color: var(--text-hell);
+    }
+    footer { margin-top: 2rem; font-size: 0.8rem; color: var(--text-hell); }
+    .pass-overlay {
+      position: fixed; inset: 0; background: var(--beige);
+      display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 1rem;
+    }
+    .pass-overlay.versteckt { display: none; }
+    .pass-form { text-align: center; max-width: 280px; }
+    .pass-form label { display: block; font-family: 'Great Vibes', cursive; font-size: 1.5rem; margin-bottom: 0.75rem; color: var(--text); }
+    .pass-form input {
+      width: 100%; padding: 0.6rem 0.8rem; font-family: 'Montserrat', sans-serif; font-size: 1rem;
+      border: 1px solid var(--beige-dunkel); border-radius: 4px; background: #fff;
+    }
+    .pass-form input:focus { outline: none; border-color: var(--sage); }
+    .pass-form button {
+      margin-top: 1rem; padding: 0.5rem 1.5rem; font-family: 'Montserrat', sans-serif; font-size: 0.85rem;
+      letter-spacing: 0.15em; text-transform: uppercase; color: #fff; background: var(--sage);
+      border: none; border-radius: 4px; cursor: pointer;
+    }
+    .pass-form button:hover { background: var(--sage-dunkel); }
+    .pass-fehler { margin-top: 0.75rem; font-size: 0.85rem; color: #a44; display: none; }
+    .pass-fehler.sichtbar { display: block; }
+    nav.menu {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(242, 237, 229, 0.95); backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--beige-dunkel);
+      margin: -2.5rem -2rem 2rem -2rem; padding: 0.75rem 1rem;
+    }
+    nav.menu ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.25rem; }
+    nav.menu a {
+      font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 0.75rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--text-hell); text-decoration: none; padding: 0.35rem 0;
+      border-bottom: 2px solid transparent;
+    }
+    nav.menu a:hover, nav.menu a:focus { color: var(--sage-dunkel); border-bottom-color: var(--sage); }
+    nav.menu a.aktiv { color: var(--sage-dunkel); border-bottom-color: var(--sage); }
+
+    .ablauf-liste {
+      list-style: none;
+      margin: 1.5rem 0 0;
+      padding: 0;
+      text-align: left;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .ablauf-liste li {
+      font-size: 0.9rem;
+      color: var(--text-hell);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--beige-dunkel);
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    .ablauf-liste li:last-child { border-bottom: none; }
+    .ablauf-liste .uhr {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      color: var(--sage-dunkel);
+      min-width: 4.5rem;
+    }
+    .ablauf-liste li.open-end {
+      margin-top: 0.75rem;
+      font-style: italic;
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <div class="pass-overlay" id="pass-overlay" aria-live="polite">
+    <form class="pass-form" id="pass-form" autocomplete="off">
+      <label for="pass-input">Bitte Passwort eingeben</label>
+      <input type="password" id="pass-input" name="pass" placeholder="Passwort" required>
+      <button type="submit">Öffnen</button>
+      <p class="pass-fehler" id="pass-fehler">Falsches Passwort.</p>
+    </form>
+  </div>
+
+  <main class="karte">
+    <nav class="menu" aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="index.html">Einladung</a></li>
+        <li><a href="ablauf.html" class="aktiv">Ablauf</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="uebernachtung.html">Übernachtung</a></li>
+      </ul>
+    </nav>
+
+    <section style="margin-top: 1rem;">
+      <p class="script">Ablauf</p>
+      <p class="sans">Unser Tag</p>
+      <ul class="ablauf-liste">
+        <li><span class="uhr">ab 15:00</span> Get together</li>
+        <li><span class="uhr">15:30</span> Freie Trauung</li>
+        <li><span class="uhr">16:15</span> Sektempfang</li>
+        <li><span class="uhr">17:15</span> Fotos</li>
+        <li><span class="uhr">17:30</span> Essen</li>
+        <li><span class="uhr">ab 20:00</span> Band &amp; DJ</li>
+        <li class="open-end"><span class="uhr">—</span> Open End</li>
+      </ul>
+    </section>
+
+    <footer>Anne & Chris</footer>
+  </main>
+
+  <script>
+    (function () {
+      var STORAGE_KEY = 'wedding_guest';
+      var EXPECTED_HASH = 'afd1a8fffb87f7a091c924e0b851f41be19d55450cf7946a5f03cc02221b6481';
+      var overlay = document.getElementById('pass-overlay');
+      var form = document.getElementById('pass-form');
+      var input = document.getElementById('pass-input');
+      var fehler = document.getElementById('pass-fehler');
+      function bufferToHex(buffer) {
+        return Array.from(new Uint8Array(buffer)).map(function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+      }
+      function sha256Hex(text) {
+        return crypto.subtle.digest('SHA-256', new TextEncoder().encode(text)).then(bufferToHex);
+      }
+      function freigeben() { try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {} overlay.classList.add('versteckt'); }
+      if (sessionStorage.getItem(STORAGE_KEY) === '1') { freigeben(); return; }
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        fehler.classList.remove('sichtbar');
+        var wert = (input.value || '').trim().toLowerCase();
+        sha256Hex(wert).then(function (hash) {
+          if (hash === EXPECTED_HASH) freigeben();
+          else { fehler.classList.add('sichtbar'); input.value = ''; input.focus(); }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
