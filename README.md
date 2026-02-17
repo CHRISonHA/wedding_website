@@ -6,8 +6,7 @@ Einfache HTML-Webseite für die Hochzeitseinladung.
 
 Öffne `index.html` in einem Editor und ersetze die Platzhalter in eckigen Klammern:
 
-- **[Name 1] & [Name 2]** – eure Namen
-- **[Datum]** – Hochzeitsdatum (z. B. Samstag, 15. Juni 2026)
+- **[Datum]** – Hochzeitsdatum (z. B. 10. August 2030)
 - **[Uhrzeit]** – z. B. 14:00 Uhr
 - **[Ort / Venue]** – Name der Location
 - **[Adresse]** / **[PLZ Ort]** – Anschrift
@@ -33,5 +32,5 @@ dann in `index.html` den Wert von `EXPECTED_HASH` ersetzen.
 ## Technik
 
 - Eine Datei: `index.html` (HTML + CSS eingebettet)
-- Keine Abhängigkeiten außer Google Fonts (Cormorant Garamond, Montserrat)
+- Keine Abhängigkeiten außer Google Fonts (Great Vibes, Montserrat)
 - Responsive, funktioniert auf Smartphone und Desktop

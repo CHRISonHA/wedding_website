@@ -6,13 +6,15 @@
   <title>Hochzeitseinladung</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --farbe-hell: #faf8f5;
-      --farbe-text: #2c2c2c;
-      --farbe-akzent: #8b7355;
-      --farbe-akzent-hell: #c4a77d;
+      --beige: #f2ede5;
+      --beige-dunkel: #e5dfd4;
+      --sage: #8a9b7a;
+      --sage-dunkel: #6b7a5d;
+      --text: #3d3d3d;
+      --text-hell: #5a5a5a;
     }
 
     * {
@@ -24,8 +26,8 @@
       min-height: 100vh;
       font-family: 'Montserrat', sans-serif;
       font-weight: 300;
-      color: var(--farbe-text);
-      background: var(--farbe-hell);
+      color: var(--text);
+      background: var(--beige);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -35,74 +37,113 @@
     }
 
     .karte {
-      max-width: 520px;
+      max-width: 480px;
       width: 100%;
       text-align: center;
-      padding: 3rem 2rem;
+      padding: 2.5rem 2rem;
+      background: var(--beige);
+      position: relative;
     }
 
-    .karte .zeile {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--farbe-akzent);
-      margin-bottom: 0.5rem;
+    .karte .script {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2rem, 6vw, 2.75rem);
+      color: var(--text);
+      margin: 0;
+      line-height: 1.2;
     }
 
-    h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 5vw, 2.75rem);
+    .karte .sans {
+      font-family: 'Montserrat', sans-serif;
       font-weight: 400;
-      margin: 0 0 2rem;
-      color: var(--farbe-text);
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--text-hell);
+      margin: 0.25rem 0 0;
     }
 
-    .namen {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.5rem, 4vw, 2rem);
-      font-weight: 600;
-      margin-bottom: 2.5rem;
-      letter-spacing: 0.05em;
+    .karte .block-top {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .karte .block-top .blatt {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 60px;
+      height: 50px;
+      opacity: 0.6;
+    }
+
+    .karte .block-mitte {
+      margin: 2rem 0;
+    }
+
+    .karte .block-unten {
+      margin-top: 2rem;
+      position: relative;
+    }
+
+    .karte .block-unten .blatt {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      height: 65px;
+      opacity: 0.6;
+      transform: scale(-1, 1);
     }
 
     .text {
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-      max-width: 42ch;
-      margin-left: auto;
-      margin-right: auto;
+      font-size: 0.9rem;
+      margin: 1.25rem auto;
+      max-width: 38ch;
+      color: var(--text-hell);
     }
 
     .details {
       margin-top: 2.5rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--farbe-akzent-hell);
+      padding: 2rem 1.5rem;
+      background: rgba(138, 155, 122, 0.12);
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .details .script {
+      font-size: 1.5rem;
+    }
+
+    .details .sans {
+      margin-bottom: 1rem;
     }
 
     .details p {
-      margin: 0.5rem 0;
-      font-size: 0.9rem;
+      margin: 0.4rem 0;
+      font-size: 0.85rem;
+      color: var(--text);
     }
 
     .datum {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
-      color: var(--farbe-akzent);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: var(--sage-dunkel);
     }
 
     footer {
-      margin-top: 3rem;
+      margin-top: 2rem;
       font-size: 0.8rem;
-      color: var(--farbe-akzent);
-      opacity: 0.9;
+      color: var(--text-hell);
     }
 
     /* Passwort-Overlay */
     .pass-overlay {
       position: fixed;
       inset: 0;
-      background: var(--farbe-hell);
+      background: var(--beige);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -121,10 +162,10 @@
 
     .pass-form label {
       display: block;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.5rem;
       margin-bottom: 0.75rem;
-      color: var(--farbe-text);
+      color: var(--text);
     }
 
     .pass-form input {
@@ -132,30 +173,32 @@
       padding: 0.6rem 0.8rem;
       font-family: 'Montserrat', sans-serif;
       font-size: 1rem;
-      border: 1px solid var(--farbe-akzent-hell);
+      border: 1px solid var(--beige-dunkel);
       border-radius: 4px;
       background: #fff;
     }
 
     .pass-form input:focus {
       outline: none;
-      border-color: var(--farbe-akzent);
+      border-color: var(--sage);
     }
 
     .pass-form button {
       margin-top: 1rem;
       padding: 0.5rem 1.5rem;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
       color: #fff;
-      background: var(--farbe-akzent);
+      background: var(--sage);
       border: none;
       border-radius: 4px;
       cursor: pointer;
     }
 
     .pass-form button:hover {
-      background: #7a6349;
+      background: var(--sage-dunkel);
     }
 
     .pass-fehler {
@@ -181,21 +224,34 @@
   </div>
 
   <main class="karte">
-    <p class="zeile">Wir freuen uns, euch einzuladen</p>
-    <h1>Hochzeitseinladung</h1>
-    <p class="namen">[Name 1] & [Name 2]</p>
+    <section class="block-top">
+      <svg class="blatt" viewBox="0 0 60 50" aria-hidden="true"><path fill="none" stroke="var(--sage)" stroke-width="1.2" stroke-linecap="round" d="M0 45 Q15 35 25 25 Q35 15 45 5 M5 40 Q20 28 30 18 M10 35 Q22 25 35 15 M15 42 Q25 32 38 22 M20 38 Q28 30 42 18"/><path fill="var(--sage)" opacity="0.7" d="M25 25 L30 20 L35 25 L32 30 L28 32 Z"/><path fill="var(--sage)" opacity="0.6" d="M15 35 L20 30 L25 35 L22 40 L17 42 Z"/><path fill="var(--sage)" opacity="0.5" d="M35 15 L40 10 L45 15 L42 20 Z"/></svg>
+      <p class="script">Einladung</p>
+      <p class="sans">Zur Hochzeit</p>
+    </section>
+
     <p class="text">
       Wir feiern unsere Hochzeit und möchten diesen besonderen Tag mit euch teilen.
     </p>
-    <section class="details">
-      <p class="datum">[Datum] · [Uhrzeit]</p>
-      <p><strong>[Ort / Venue]</strong></p>
-      <p>[Adresse]<br>[PLZ Ort]</p>
+
+    <section class="block-unten">
+      <svg class="blatt" viewBox="0 0 80 65" aria-hidden="true"><path fill="none" stroke="var(--sage)" stroke-width="1.2" stroke-linecap="round" d="M5 60 Q25 45 40 30 Q55 15 75 5 M10 55 Q30 40 45 28 M15 50 Q35 35 50 22 M8 62 Q22 48 38 35 M20 58 Q35 45 52 32"/><path fill="var(--sage)" opacity="0.7" d="M40 30 L46 24 L52 30 L48 36 L42 38 Z"/><path fill="var(--sage)" opacity="0.6" d="M25 45 L32 38 L38 45 L34 52 L28 54 Z"/><path fill="var(--sage)" opacity="0.5" d="M55 18 L62 12 L68 18 L64 24 Z"/></svg>
+      <p class="script">feiert mit uns</p>
+      <p class="sans">Am 28. August 2027 · [Uhrzeit]</p>
     </section>
-    <p class="text" style="margin-top: 2rem;">
-      Über eine Rückmeldung bis zum [Datum] freuen wir uns.<br>
-      [Optional: Kontakt oder Link zur Rückmeldung]
-    </p>
+
+    <section class="details">
+      <p class="script">weitere Details</p>
+      <p class="sans">Zu unserem großen Tag</p>
+      <p class="datum">28. August 2027 · [Uhrzeit]</p>
+      <p><strong>Edelfuchs-Lodge</strong></p>
+      <p>Hundsbachstraße 3<br>77830 Bühlertal</p>
+      <p class="text" style="margin-top: 1rem;">
+        Über eine Rückmeldung bis zum [Datum] freuen wir uns.<br>
+        [Optional: Kontakt oder Link zur Rückmeldung]
+      </p>
+    </section>
+
     <footer>Mit lieben Grüßen</footer>
   </main>
 
