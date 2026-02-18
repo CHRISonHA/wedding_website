@@ -278,7 +278,8 @@
     <p class="script">Zu- & Absage</p>
     <p class="sans">Rückmeldung</p>
 
-    <form id="rsvpForm" class="rsvp-form">
+    <!-- Form-POST (nicht fetch) umgeht CORS. GAS doPost(e) liest: e.parameter.name, e.parameter.erwachsene, e.parameter.kinder, e.parameter.kleinkinder, e.parameter.zusage, e.parameter.nachricht -->
+    <form id="rsvpForm" class="rsvp-form" method="post" target="_blank" action="https://script.google.com/macros/s/AKfycbzn_IMn5k86cYEVQjtGQzplAaSQHQ6B3rtGOBcUPdHaQYramZpHMh0_sN1_GnCYyvTQXg/exec">
       <label for="name">Name</label>
       <input type="text" id="name" name="name" required>
 
@@ -355,59 +356,20 @@
         });
       }
 
-      // RSVP-Formular
+      // RSVP-Formular: klassischer Form-POST (umgeht CORS)
       var rsvpForm = document.getElementById('rsvpForm');
       var statusEl = document.getElementById('status');
-      var submitBtn = document.getElementById('submitBtn');
 
-      rsvpForm.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        statusEl.textContent = '';
-        statusEl.className = '';
-        submitBtn.disabled = true;
-
-        var formData = new FormData(rsvpForm);
-        var data = {
-          name: formData.get('name') || '',
-          erwachsene: formData.get('erwachsene') || '0',
-          kinder: formData.get('kinder') || '0',
-          kleinkinder: formData.get('kleinkinder') || '0',
-          zusage: formData.get('zusage') || '',
-          nachricht: formData.get('nachricht') || ''
-        };
-
-        try {
-          var response = await fetch(SCRIPT_URL, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: { 'Content-Type': 'application/json' },
-            mode: 'cors'
-          });
-
-          if (response.ok) {
-            statusEl.textContent = 'Danke! Deine Rückmeldung wurde gespeichert.';
-            statusEl.className = 'erfolg';
-            rsvpForm.reset();
-            document.getElementById('erwachsene').value = 0;
-            document.getElementById('kinder').value = 0;
-            document.getElementById('kleinkinder').value = 0;
-          } else {
-            var errText = await response.text();
-            var shortMsg = (errText && errText.length < 120) ? errText : ('Fehler ' + response.status + (response.statusText ? ': ' + response.statusText : ''));
-            statusEl.textContent = 'Beim Senden ist ein Fehler aufgetreten. (' + shortMsg + ')';
-            statusEl.className = 'fehler';
-          }
-        } catch (err) {
-          var msg = err && err.message ? err.message : 'Unbekannter Fehler';
-          if (msg.indexOf('Failed to fetch') !== -1 || msg.indexOf('NetworkError') !== -1) {
-            statusEl.textContent = 'Verbindung fehlgeschlagen. Bitte Internet prüfen oder später erneut versuchen. (CORS/Netzwerk)';
-          } else {
-            statusEl.textContent = 'Beim Senden ist ein Fehler aufgetreten: ' + msg;
-          }
-          statusEl.className = 'fehler';
-        }
-
-        submitBtn.disabled = false;
+      rsvpForm.addEventListener('submit', function (e) {
+        statusEl.textContent = 'Deine Rückmeldung wurde gesendet. Ein neuer Tab wurde zur Bestätigung geöffnet.';
+        statusEl.className = 'erfolg';
+        setTimeout(function () {
+          rsvpForm.reset();
+          document.getElementById('erwachsene').value = 0;
+          document.getElementById('kinder').value = 0;
+          document.getElementById('kleinkinder').value = 0;
+        }, 800);
+        // Formular wird normal abgeschickt (kein preventDefault) → POST in neuem Tab
       });
     })();
   </script>
