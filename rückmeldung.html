@@ -278,8 +278,9 @@
     <p class="script">Zu- & Absage</p>
     <p class="sans">Rückmeldung</p>
 
-    <!-- Form-POST (nicht fetch) umgeht CORS. GAS doPost(e) liest: e.parameter.name, e.parameter.erwachsene, e.parameter.kinder, e.parameter.kleinkinder, e.parameter.zusage, e.parameter.nachricht -->
-    <form id="rsvpForm" class="rsvp-form" method="post" target="_blank" action="https://script.google.com/macros/s/AKfycbzn_IMn5k86cYEVQjtGQzplAaSQHQ6B3rtGOBcUPdHaQYramZpHMh0_sN1_GnCYyvTQXg/exec">
+    <!-- Form-POST in verstecktes iframe → keine neue Tab, Rückmeldung auf der Seite -->
+    <iframe name="rsvpFrame" id="rsvpFrame" title="Rückmeldung" hidden></iframe>
+    <form id="rsvpForm" class="rsvp-form" method="post" target="rsvpFrame" action="https://script.google.com/macros/s/AKfycbzn_IMn5k86cYEVQjtGQzplAaSQHQ6B3rtGOBcUPdHaQYramZpHMh0_sN1_GnCYyvTQXg/exec">
       <label for="name">Name</label>
       <input type="text" id="name" name="name" required>
 
@@ -361,7 +362,7 @@
       var statusEl = document.getElementById('status');
 
       rsvpForm.addEventListener('submit', function (e) {
-        statusEl.textContent = 'Deine Rückmeldung wurde gesendet. Ein neuer Tab wurde zur Bestätigung geöffnet.';
+        statusEl.textContent = 'Danke! Deine Rückmeldung wurde gespeichert.';
         statusEl.className = 'erfolg';
         setTimeout(function () {
           rsvpForm.reset();
@@ -369,7 +370,7 @@
           document.getElementById('kinder').value = 0;
           document.getElementById('kleinkinder').value = 0;
         }, 800);
-        // Formular wird normal abgeschickt (kein preventDefault) → POST in neuem Tab
+        // Formular wird in iframe gesendet → Nutzer bleibt auf der Seite
       });
     })();
   </script>
