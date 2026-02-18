@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rückmeldung – Hochzeit Anne & Chris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --beige: #f2ede5;
+      --beige-dunkel: #e5dfd4;
+      --sage: #8a9b7a;
+      --sage-dunkel: #6b7a5d;
+      --text: #3d3d3d;
+      --text-hell: #5a5a5a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      color: var(--text);
+      background: var(--beige);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      line-height: 1.6;
+    }
+
+    .karte {
+      max-width: 420px;
+      width: 100%;
+      padding: 2rem 1.5rem;
+    }
+
+    .script {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(1.75rem, 5vw, 2.25rem);
+      color: var(--text);
+      margin: 0 0 0.25rem;
+    }
+
+    .sans {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--text-hell);
+      margin: 0 0 1.5rem;
+    }
+
+    .rsvp-form {
+      background: rgba(138, 155, 122, 0.1);
+      padding: 1.5rem;
+      border-radius: 6px;
+      text-align: left;
+    }
+
+    .rsvp-form label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-top: 1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .rsvp-form label:first-of-type { margin-top: 0; }
+
+    .rsvp-form input,
+    .rsvp-form select,
+    .rsvp-form textarea {
+      width: 100%;
+      padding: 0.5rem 0.65rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      border: 1px solid var(--beige-dunkel);
+      border-radius: 4px;
+      background: #fff;
+      color: var(--text);
+    }
+
+    .rsvp-form input:focus,
+    .rsvp-form select:focus,
+    .rsvp-form textarea:focus {
+      outline: none;
+      border-color: var(--sage);
+    }
+
+    .rsvp-form input[type="number"] { width: 5rem; }
+
+    .rsvp-form textarea {
+      min-height: 4rem;
+      resize: vertical;
+    }
+
+    .rsvp-form button {
+      margin-top: 1.25rem;
+      padding: 0.6rem 1.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--sage);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .rsvp-form button:hover {
+      background: var(--sage-dunkel);
+    }
+
+    .rsvp-form button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    #status {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      min-height: 1.5em;
+    }
+
+    #status.erfolg { color: var(--sage-dunkel); }
+    #status.fehler { color: #a44; }
+
+    .back {
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--sage-dunkel);
+      text-decoration: none;
+      border-bottom: 1px solid var(--sage);
+    }
+
+    .back:hover { color: var(--sage); }
+
+    nav.menu {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--beige);
+      width: 100%;
+      max-width: 480px;
+      margin-bottom: 0.5rem;
+    }
+
+    nav.menu ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem 1rem;
+    }
+
+    nav.menu a {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-hell);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 2px;
+    }
+
+    nav.menu a:hover,
+    nav.menu a:focus {
+      color: var(--sage-dunkel);
+      border-bottom-color: var(--sage);
+    }
+
+    nav.menu a.aktiv {
+      color: var(--sage-dunkel);
+      border-bottom-color: var(--sage);
+    }
+
+    .pass-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--beige);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 1rem;
+    }
+
+    .pass-overlay.versteckt { display: none; }
+
+    .pass-form {
+      text-align: center;
+      max-width: 280px;
+    }
+
+    .pass-form label {
+      display: block;
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .pass-form input {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      border: 1px solid var(--beige-dunkel);
+      border-radius: 4px;
+      background: #fff;
+    }
+
+    .pass-form input:focus {
+      outline: none;
+      border-color: var(--sage);
+    }
+
+    .pass-form button {
+      margin-top: 1rem;
+      padding: 0.5rem 1.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--sage);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .pass-form button:hover { background: var(--sage-dunkel); }
+
+    .pass-fehler {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: #a44;
+      display: none;
+    }
+
+    .pass-fehler.sichtbar { display: block; }
+  </style>
+</head>
+<body>
+  <div class="pass-overlay" id="pass-overlay" aria-live="polite">
+    <form class="pass-form" id="pass-form" autocomplete="off">
+      <label for="pass-input">Bitte Passwort eingeben</label>
+      <input type="password" id="pass-input" name="pass" placeholder="Passwort" required>
+      <button type="submit">Öffnen</button>
+      <p class="pass-fehler" id="pass-fehler">Falsches Passwort.</p>
+    </form>
+  </div>
+
+  <main class="karte">
+    <nav class="menu" aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="index.html">Einladung</a></li>
+        <li><a href="ablauf.html">Ablauf</a></li>
+        <li><a href="rückmeldung.html" class="aktiv">Rückmeldung</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="uebernachtung.html">Übernachtung</a></li>
+      </ul>
+    </nav>
+
+    <p class="script">Zu- & Absage</p>
+    <p class="sans">Rückmeldung</p>
+
+    <form id="rsvpForm" class="rsvp-form">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="zusage">Ich komme …</label>
+      <select id="zusage" name="zusage" required>
+        <option value="">Bitte wählen</option>
+        <option value="Zusage">…selbstverständlich!</option>
+        <option value="Absage">…leider nicht :(</option>
+      </select>
+
+      <label for="erwachsene">Anzahl Erwachsene (ab 16 Jahre)</label>
+      <input type="number" id="erwachsene" name="erwachsene" min="0" value="0" required>
+
+      <label for="kinder">Anzahl Kinder (5-15 Jahre)</label>
+      <input type="number" id="kinder" name="kinder" min="0" value="0">
+
+      <label for="kleinkinder">Anzahl kleine Kinder (bis 4 Jahre)</label>
+      <input type="number" id="kleinkinder" name="kleinkinder" min="0" value="0">
+
+      <label for="nachricht">Nachricht</label>
+      <textarea id="nachricht" name="nachricht"></textarea>
+
+      <button type="submit" id="submitBtn">Absenden</button>
+    </form>
+
+    <p id="status" role="status"></p>
+    <a href="index.html" class="back">← Zurück zur Einladung</a>
+  </main>
+
+  <script>
+    (function () {
+      var STORAGE_KEY = 'wedding_guest';
+      var EXPECTED_HASH = 'afd1a8fffb87f7a091c924e0b851f41be19d55450cf7946a5f03cc02221b6481';
+      var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzn_IMn5k86cYEVQjtGQzplAaSQHQ6B3rtGOBcUPdHaQYramZpHMh0_sN1_GnCYyvTQXg/exec';
+
+      var overlay = document.getElementById('pass-overlay');
+      var passForm = document.getElementById('pass-form');
+      var passInput = document.getElementById('pass-input');
+      var passFehler = document.getElementById('pass-fehler');
+
+      function bufferToHex(buffer) {
+        return Array.from(new Uint8Array(buffer))
+          .map(function (b) { return ('0' + b.toString(16)).slice(-2); })
+          .join('');
+      }
+
+      function sha256Hex(text) {
+        return crypto.subtle
+          .digest('SHA-256', new TextEncoder().encode(text))
+          .then(bufferToHex);
+      }
+
+      function freigeben() {
+        try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+        overlay.classList.add('versteckt');
+      }
+
+      if (sessionStorage.getItem(STORAGE_KEY) === '1') {
+        freigeben();
+      } else {
+        passForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          passFehler.classList.remove('sichtbar');
+          var wert = (passInput.value || '').trim().toLowerCase();
+          sha256Hex(wert).then(function (hash) {
+            if (hash === EXPECTED_HASH) {
+              freigeben();
+            } else {
+              passFehler.classList.add('sichtbar');
+              passInput.value = '';
+              passInput.focus();
+            }
+          });
+        });
+      }
+
+      // RSVP-Formular
+      var rsvpForm = document.getElementById('rsvpForm');
+      var statusEl = document.getElementById('status');
+      var submitBtn = document.getElementById('submitBtn');
+
+      rsvpForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        statusEl.textContent = '';
+        statusEl.className = '';
+        submitBtn.disabled = true;
+
+        var formData = new FormData(rsvpForm);
+        var data = {
+          name: formData.get('name') || '',
+          erwachsene: formData.get('erwachsene') || '0',
+          kinder: formData.get('kinder') || '0',
+          kleinkinder: formData.get('kleinkinder') || '0',
+          zusage: formData.get('zusage') || '',
+          nachricht: formData.get('nachricht') || ''
+        };
+
+        try {
+          var response = await fetch(SCRIPT_URL, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: { 'Content-Type': 'application/json' },
+            mode: 'cors'
+          });
+
+          if (response.ok) {
+            statusEl.textContent = 'Danke! Deine Rückmeldung wurde gespeichert.';
+            statusEl.className = 'erfolg';
+            rsvpForm.reset();
+            document.getElementById('erwachsene').value = 0;
+            document.getElementById('kinder').value = 0;
+            document.getElementById('kleinkinder').value = 0;
+          } else {
+            var errText = await response.text();
+            var shortMsg = (errText && errText.length < 120) ? errText : ('Fehler ' + response.status + (response.statusText ? ': ' + response.statusText : ''));
+            statusEl.textContent = 'Beim Senden ist ein Fehler aufgetreten. (' + shortMsg + ')';
+            statusEl.className = 'fehler';
+          }
+        } catch (err) {
+          var msg = err && err.message ? err.message : 'Unbekannter Fehler';
+          if (msg.indexOf('Failed to fetch') !== -1 || msg.indexOf('NetworkError') !== -1) {
+            statusEl.textContent = 'Verbindung fehlgeschlagen. Bitte Internet prüfen oder später erneut versuchen. (CORS/Netzwerk)';
+          } else {
+            statusEl.textContent = 'Beim Senden ist ein Fehler aufgetreten: ' + msg;
+          }
+          statusEl.className = 'fehler';
+        }
+
+        submitBtn.disabled = false;
+      });
+    })();
+  </script>
+</body>
+</html>
