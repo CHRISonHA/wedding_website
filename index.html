@@ -3,272 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hochzeitseinladung</title>
+  <meta name="theme-color" content="#f8f6f2">
+  <meta name="description" content="Hochzeit von Anne & Chris – 28. August 2027, Edelfuchs-Lodge Bühlertal.">
+  <meta property="og:title" content="Anne & Chris – Hochzeit">
+  <meta property="og:description" content="28. August 2027 · Edelfuchs-Lodge · Schwarzwald">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.hochzeit-anne-und-chris.top/">
+  <meta property="og:image" content="https://www.hochzeit-anne-und-chris.top/og-image.svg">
+  <meta property="og:locale" content="de_DE">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Hochzeit Anne & Chris</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --beige: #f2ede5;
-      --beige-dunkel: #e5dfd4;
-      --sage: #8a9b7a;
-      --sage-dunkel: #6b7a5d;
-      --text: #3d3d3d;
-      --text-hell: #5a5a5a;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 300;
-      color: var(--text);
-      background: var(--beige);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1rem;
-      line-height: 1.6;
-    }
-
-    .karte {
-      max-width: 480px;
-      width: 100%;
-      text-align: center;
-      padding: 2.5rem 2rem;
-      background: var(--beige);
-      position: relative;
-    }
-
-    .karte .script {
-      font-family: 'Great Vibes', cursive;
-      font-size: clamp(2rem, 6vw, 2.75rem);
-      color: var(--text);
-      margin: 0;
-      line-height: 1.2;
-    }
-
-    .karte .sans {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 400;
-      font-size: 0.7rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--text-hell);
-      margin: 0.25rem 0 0;
-    }
-
-    .karte .block-top {
-      margin-bottom: 2rem;
-      position: relative;
-    }
-
-    .karte .block-top .blatt {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 60px;
-      height: 50px;
-      opacity: 0.6;
-    }
-
-    .karte .block-mitte {
-      margin: 2rem 0;
-    }
-
-    .karte .block-unten {
-      margin-top: 2rem;
-      position: relative;
-    }
-
-    .karte .block-unten .blatt {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 80px;
-      height: 65px;
-      opacity: 0.6;
-      transform: scale(-1, 1);
-    }
-
-    .text {
-      font-size: 0.9rem;
-      margin: 1.25rem auto;
-      max-width: 38ch;
-      color: var(--text-hell);
-    }
-
-    .details {
-      margin-top: 2.5rem;
-      padding: 2rem 1.5rem;
-      background: rgba(138, 155, 122, 0.12);
-      border-radius: 4px;
-      text-align: center;
-    }
-
-    .details .script {
-      font-size: 1.5rem;
-    }
-
-    .details .sans {
-      margin-bottom: 1rem;
-    }
-
-    .details p {
-      margin: 0.4rem 0;
-      font-size: 0.85rem;
-      color: var(--text);
-    }
-
-    .details a {
-      color: var(--sage-dunkel);
-      text-decoration: none;
-      border-bottom: 1px solid var(--sage);
-    }
-
-    .details a:hover {
-      color: var(--sage);
-    }
-
-    .datum {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 400;
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      color: var(--sage-dunkel);
-    }
-
-    footer {
-      margin-top: 2rem;
-      font-size: 0.8rem;
-      color: var(--text-hell);
-    }
-
-    /* Passwort-Overlay */
-    .pass-overlay {
-      position: fixed;
-      inset: 0;
-      background: var(--beige);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      padding: 1rem;
-    }
-
-    .pass-overlay.versteckt {
-      display: none;
-    }
-
-    .pass-form {
-      text-align: center;
-      max-width: 280px;
-    }
-
-    .pass-form label {
-      display: block;
-      font-family: 'Great Vibes', cursive;
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-      color: var(--text);
-    }
-
-    .pass-form input {
-      width: 100%;
-      padding: 0.6rem 0.8rem;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
-      border: 1px solid var(--beige-dunkel);
-      border-radius: 4px;
-      background: #fff;
-    }
-
-    .pass-form input:focus {
-      outline: none;
-      border-color: var(--sage);
-    }
-
-    .pass-form button {
-      margin-top: 1rem;
-      padding: 0.5rem 1.5rem;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #fff;
-      background: var(--sage);
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .pass-form button:hover {
-      background: var(--sage-dunkel);
-    }
-
-    .pass-fehler {
-      margin-top: 0.75rem;
-      font-size: 0.85rem;
-      color: #a44;
-      display: none;
-    }
-
-    .pass-fehler.sichtbar {
-      display: block;
-    }
-
-    /* Menü */
-    nav.menu {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(242, 237, 229, 0.95);
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid var(--beige-dunkel);
-      margin: -2.5rem -2rem 2rem -2rem;
-      padding: 0.75rem 1rem;
-    }
-
-    nav.menu ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.5rem 1.25rem;
-    }
-
-    nav.menu a {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 400;
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-hell);
-      text-decoration: none;
-      padding: 0.35rem 0;
-      border-bottom: 2px solid transparent;
-    }
-
-    nav.menu a:hover,
-    nav.menu a:focus {
-      color: var(--sage-dunkel);
-      border-bottom-color: var(--sage);
-    }
-
-    nav.menu a.aktiv {
-      color: var(--sage-dunkel);
-      border-bottom-color: var(--sage);
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="page-onepage">
   <div class="pass-overlay" id="pass-overlay" aria-live="polite">
     <form class="pass-form" id="pass-form" autocomplete="off">
       <label for="pass-input">Bitte Passwort eingeben</label>
@@ -278,57 +28,217 @@
     </form>
   </div>
 
-  <main class="karte">
-    <nav class="menu" aria-label="Hauptnavigation">
-      <ul>
-        <li><a href="index.html" class="aktiv">Einladung</a></li>
-        <li><a href="ablauf.html">Ablauf</a></li>
-        <li><a href="rückmeldung.html">Rückmeldung</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-        <li><a href="uebernachtung.html">Übernachtung</a></li>
-      </ul>
-    </nav>
+  <main class="onepage-main" id="top">
+    <!-- Einladung -->
+    <section id="einladung" class="section section--einladung" aria-labelledby="einladung-heading">
+      <div class="karte karte--einladung karte--einladung-minimal onepage-card">
+        <div class="einladung-body">
+          <header class="einladung-hero einladung-hero--ref">
+            <svg class="einladung-deco einladung-deco--ref-tl" viewBox="0 0 210 200" aria-hidden="true">
+              <defs>
+                <linearGradient id="ref-tl-a" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#e2f0ec" stop-opacity="0.5"/>
+                  <stop offset="45%" stop-color="#a3c4bb" stop-opacity="0.42"/>
+                  <stop offset="100%" stop-color="#7a9e96" stop-opacity="0.36"/>
+                </linearGradient>
+                <linearGradient id="ref-tl-b" x1="100%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#d4e8e0" stop-opacity="0.44"/>
+                  <stop offset="100%" stop-color="#6d9084" stop-opacity="0.34"/>
+                </linearGradient>
+                <filter id="ref-tl-soft" x="-12%" y="-12%" width="124%" height="124%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="0.42"/>
+                </filter>
+              </defs>
+              <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="#6b8578" stroke-width="0.55" opacity="0.26" d="M 6 8 C 28 48 62 105 118 158 C 145 178 172 192 198 198"/>
+                <path stroke="#6b8578" stroke-width="0.4" opacity="0.2" d="M 32 42 Q 18 62 12 88"/>
+                <path stroke="#6b8578" stroke-width="0.38" opacity="0.18" d="M 78 98 Q 62 118 52 138"/>
+              </g>
+              <g filter="url(#ref-tl-soft)" opacity="0.92">
+                <g fill="url(#ref-tl-a)">
+                  <ellipse transform="translate(22 38) rotate(35)" cx="0" cy="0" rx="9" ry="7.5"/>
+                  <ellipse transform="translate(32 28) rotate(-42)" cx="0" cy="0" rx="6.5" ry="5.5"/>
+                  <ellipse transform="translate(48 62) rotate(42)" cx="0" cy="0" rx="8.5" ry="7"/>
+                  <ellipse transform="translate(58 52) rotate(-48)" cx="0" cy="0" rx="6" ry="5"/>
+                  <ellipse transform="translate(72 88) rotate(-38)" cx="0" cy="0" rx="9" ry="7.5"/>
+                  <ellipse transform="translate(82 78) rotate(50)" cx="0" cy="0" rx="6.5" ry="5"/>
+                  <ellipse transform="translate(98 118) rotate(40)" cx="0" cy="0" rx="8" ry="6.5"/>
+                  <ellipse transform="translate(108 108) rotate(-44)" cx="0" cy="0" rx="6" ry="5"/>
+                  <ellipse transform="translate(128 142) rotate(-36)" cx="0" cy="0" rx="8.5" ry="7"/>
+                  <ellipse transform="translate(138 132) rotate(46)" cx="0" cy="0" rx="6" ry="5"/>
+                  <ellipse transform="translate(158 162) rotate(34)" cx="0" cy="0" rx="7.5" ry="6"/>
+                  <ellipse transform="translate(172 178) rotate(-40)" cx="0" cy="0" rx="6.5" ry="5.5"/>
+                  <ellipse transform="translate(188 190) rotate(48)" cx="0" cy="0" rx="8" ry="6.5"/>
+                </g>
+              </g>
+              <g fill="none" stroke="#6b8578" stroke-width="0.26" stroke-linecap="round" opacity="0.35">
+                <path transform="translate(48 62) rotate(42)" d="M0 -5v10"/>
+                <path transform="translate(72 88) rotate(-38)" d="M0 -5v10"/>
+                <path transform="translate(98 118) rotate(40)" d="M0 -4v8"/>
+                <path transform="translate(128 142) rotate(-36)" d="M0 -4v8"/>
+              </g>
+            </svg>
+            <svg class="einladung-deco einladung-deco--ref-br" viewBox="0 0 210 200" aria-hidden="true">
+              <defs>
+                <linearGradient id="ref-br-a" x1="100%" y1="100%" x2="0%" y2="0%">
+                  <stop offset="0%" stop-color="#e2f0ec" stop-opacity="0.5"/>
+                  <stop offset="45%" stop-color="#a3c4bb" stop-opacity="0.42"/>
+                  <stop offset="100%" stop-color="#7a9e96" stop-opacity="0.36"/>
+                </linearGradient>
+                <linearGradient id="ref-br-b" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#d4e8e0" stop-opacity="0.44"/>
+                  <stop offset="100%" stop-color="#6d9084" stop-opacity="0.34"/>
+                </linearGradient>
+                <filter id="ref-br-soft" x="-12%" y="-12%" width="124%" height="124%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="0.42"/>
+                </filter>
+              </defs>
+              <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="#6b8578" stroke-width="0.55" opacity="0.26" d="M 204 192 C 182 152 148 95 92 42 C 65 22 38 8 12 2"/>
+                <path stroke="#6b8578" stroke-width="0.4" opacity="0.2" d="M 178 158 Q 192 138 198 112"/>
+                <path stroke="#6b8578" stroke-width="0.38" opacity="0.18" d="M 132 102 Q 148 82 158 62"/>
+              </g>
+              <g filter="url(#ref-br-soft)" opacity="0.92">
+                <g fill="url(#ref-br-a)">
+                  <ellipse transform="translate(188 162) rotate(-35)" cx="0" cy="0" rx="9" ry="7.5"/>
+                  <ellipse transform="translate(178 172) rotate(42)" cx="0" cy="0" rx="6.5" ry="5.5"/>
+                  <ellipse transform="translate(162 138) rotate(-42)" cx="0" cy="0" rx="8.5" ry="7"/>
+                  <ellipse transform="translate(152 148) rotate(48)" cx="0" cy="0" rx="6" ry="5"/>
+                  <ellipse transform="translate(138 112) rotate(38)" cx="0" cy="0" rx="9" ry="7.5"/>
+                  <ellipse transform="translate(128 122) rotate(-50)" cx="0" cy="0" rx="6.5" ry="5"/>
+                  <ellipse transform="translate(112 82) rotate(-40)" cx="0" cy="0" rx="8" ry="6.5"/>
+                  <ellipse transform="translate(102 92) rotate(44)" cx="0" cy="0" rx="6" ry="5"/>
+                  <ellipse transform="translate(82 58) rotate(36)" cx="0" cy="0" rx="8.5" ry="7"/>
+                  <ellipse transform="translate(72 68) rotate(-46)" cx="0" cy="0" rx="6" ry="5"/>
+                  <ellipse transform="translate(52 38) rotate(-34)" cx="0" cy="0" rx="7.5" ry="6"/>
+                  <ellipse transform="translate(38 22) rotate(40)" cx="0" cy="0" rx="6.5" ry="5.5"/>
+                  <ellipse transform="translate(22 10) rotate(-48)" cx="0" cy="0" rx="8" ry="6.5"/>
+                </g>
+              </g>
+              <g fill="none" stroke="#6b8578" stroke-width="0.26" stroke-linecap="round" opacity="0.35">
+                <path transform="translate(162 138) rotate(-42)" d="M0 -5v10"/>
+                <path transform="translate(138 112) rotate(38)" d="M0 -5v10"/>
+                <path transform="translate(112 82) rotate(-40)" d="M0 -4v8"/>
+                <path transform="translate(82 58) rotate(36)" d="M0 -4v8"/>
+              </g>
+            </svg>
 
-    <section class="block-top">
-      <svg class="blatt" viewBox="0 0 60 50" aria-hidden="true"><path fill="none" stroke="var(--sage)" stroke-width="1.2" stroke-linecap="round" d="M0 45 Q15 35 25 25 Q35 15 45 5 M5 40 Q20 28 30 18 M10 35 Q22 25 35 15 M15 42 Q25 32 38 22 M20 38 Q28 30 42 18"/><path fill="var(--sage)" opacity="0.7" d="M25 25 L30 20 L35 25 L32 30 L28 32 Z"/><path fill="var(--sage)" opacity="0.6" d="M15 35 L20 30 L25 35 L22 40 L17 42 Z"/><path fill="var(--sage)" opacity="0.5" d="M35 15 L40 10 L45 15 L42 20 Z"/></svg>
-      <p class="script">Einladung</p>
-      <p class="sans">Zur Hochzeit</p>
+            <div class="invite-ref">
+              <p class="invite-ref__kicker">Hochzeitseinladung</p>
+              <h1 class="invite-ref__heading" id="einladung-heading">
+                <span class="invite-ref__line">Anne</span>
+                <span class="invite-ref__und">und</span>
+                <span class="invite-ref__line">Chris</span>
+              </h1>
+              <div class="invite-ref__rings" aria-hidden="true">
+                <svg viewBox="0 0 56 32" focusable="false">
+                  <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                    <circle cx="21" cy="16" r="9.5"/>
+                    <circle cx="35" cy="16" r="9.5"/>
+                  </g>
+                </svg>
+              </div>
+              <p class="invite-ref__tagline">Wir sagen Ja – und laden euch von Herzen ein.</p>
+              <hr class="invite-ref__rule">
+              <p class="invite-ref__date-long">28. August 2027</p>
+              <p class="invite-ref__ort">Edelfuchs Lodge · Bühlertal</p>
+              <div class="invite-ref__lodge-logo">
+                <img src="images/edelfuchs-lodge-logo.png" alt="" loading="lazy" decoding="async">
+              </div>
+              <p class="invite-ref__addr">Edelfuchs Lodge Hundsbachstraße 3<br>77830 Bühlertal</p>
+            </div>
+          </header>
+        </div>
+      </div>
     </section>
 
-    <p class="text">
-      Wir feiern unsere Hochzeit und möchten diesen besonderen Tag mit euch teilen.
-    </p>
-
-    <section class="block-unten">
-      <svg class="blatt" viewBox="0 0 80 65" aria-hidden="true"><path fill="none" stroke="var(--sage)" stroke-width="1.2" stroke-linecap="round" d="M5 60 Q25 45 40 30 Q55 15 75 5 M10 55 Q30 40 45 28 M15 50 Q35 35 50 22 M8 62 Q22 48 38 35 M20 58 Q35 45 52 32"/><path fill="var(--sage)" opacity="0.7" d="M40 30 L46 24 L52 30 L48 36 L42 38 Z"/><path fill="var(--sage)" opacity="0.6" d="M25 45 L32 38 L38 45 L34 52 L28 54 Z"/><path fill="var(--sage)" opacity="0.5" d="M55 18 L62 12 L68 18 L64 24 Z"/></svg>
-      <p class="script">feiert mit uns</p>
-      <p class="sans">Am 28. August 2027 · 15:30 Uhr</p>
+    <!-- Ablauf -->
+    <section id="ablauf" class="section section--ablauf" aria-labelledby="ablauf-title">
+      <div class="section-inner">
+        <p class="section-kicker">Ablauf</p>
+        <h2 class="section-title" id="ablauf-title">Unser Tag</h2>
+        <ul class="timeline" role="list">
+          <li class="timeline__row"><span class="timeline__time">ab 15:00</span><span class="timeline__label">Get together</span></li>
+          <li class="timeline__row"><span class="timeline__time">15:30</span><span class="timeline__label">Freie Trauung</span></li>
+          <li class="timeline__row"><span class="timeline__time">16:15</span><span class="timeline__label">Sektempfang</span></li>
+          <li class="timeline__row"><span class="timeline__time">17:15</span><span class="timeline__label">Fotos</span></li>
+          <li class="timeline__row"><span class="timeline__time">17:30</span><span class="timeline__label">Essen</span></li>
+          <li class="timeline__row"><span class="timeline__time">ab 20:00</span><span class="timeline__label">Band &amp; DJ</span></li>
+          <li class="timeline__row timeline__row--open"><span class="timeline__time">—</span><span class="timeline__label">Open End</span></li>
+        </ul>
+      </div>
     </section>
 
-    <section class="details">
-      <p class="script">weitere Details</p>
-      <p class="sans">Zu unserem großen Tag</p>
-      <p class="datum">28. August 2027 · 15:30 Uhr</p>
-      <p><strong><a href="https://maps.app.goo.gl/pGjUVfkcX8heiLts8" target="_blank" rel="noopener noreferrer">Edelfuchs-Lodge</a></strong></p>
-      <p>Hundsbachstraße 3<br>77830 Bühlertal</p>
-      <p class="text" style="margin-top: 1rem;">
-        Über eine <a href="rückmeldung.html">Rückmeldung</a> bis zum [Datum] freuen wir uns.
-      </p>
+    <!-- Rückmeldung -->
+    <section id="rueckmeldung" class="section section--rsvp" aria-labelledby="rsvp-title">
+      <div class="section-inner section-inner--narrow">
+        <p class="section-kicker">Rückmeldung</p>
+        <h2 class="section-title" id="rsvp-title">Zu- &amp; Absage</h2>
+        <p class="section-note">Bitte antwortet bis zum <strong>31. Mai 2027</strong>.</p>
+
+        <iframe name="rsvpFrame" id="rsvpFrame" title="Rückmeldung" hidden></iframe>
+        <form id="rsvpForm" class="rsvp-form" method="post" target="rsvpFrame" action="https://script.google.com/macros/s/AKfycbzn_IMn5k86cYEVQjtGQzplAaSQHQ6B3rtGOBcUPdHaQYramZpHMh0_sN1_GnCYyvTQXg/exec">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="zusage">Ich komme …</label>
+          <select id="zusage" name="zusage" required>
+            <option value="">Bitte wählen</option>
+            <option value="selbstverständlich zu Eurer Hochzeit!">selbstverständlich zu Eurer Hochzeit!</option>
+            <option value="leider nicht, aber habe eine besonders gute Entschuldigung :(">leider nicht, aber habe eine besonders gute Entschuldigung :(</option>
+          </select>
+
+          <label for="erwachsene">Anzahl Erwachsene (ab 16 Jahre)</label>
+          <input type="number" id="erwachsene" name="erwachsene" min="0" value="0" required>
+
+          <label for="kinder">Anzahl Kinder (5–15 Jahre)</label>
+          <input type="number" id="kinder" name="kinder" min="0" value="0">
+
+          <label for="kleinkinder">Anzahl kleine Kinder (bis 4 Jahre)</label>
+          <input type="number" id="kleinkinder" name="kleinkinder" min="0" value="0">
+
+          <label for="nachricht">Nachricht</label>
+          <textarea id="nachricht" name="nachricht"></textarea>
+
+          <button type="submit" id="submitBtn">Absenden</button>
+        </form>
+        <p id="status" role="status"></p>
+      </div>
     </section>
 
-    <footer>Anne & Chris</footer>
+    <!-- Unterkünfte (Anker: #uebernachtung, Redirects bleiben gültig) -->
+    <section id="uebernachtung" class="section section--ueber" aria-labelledby="ueber-title">
+      <div class="section-inner">
+        <p class="section-kicker">Unterkünfte</p>
+        <h2 class="section-title" id="ueber-title">Unterkünfte in der Nähe</h2>
+
+        <div class="ueber-block">
+          <p class="text ueber-einleitung">Unsere Gäste mit kleinen Kindern laden wir ein, direkt in der Location zu übernachten:</p>
+          <p class="adresse"><a href="https://www.google.com/maps/search/?api=1&query=Edelfuchs-Lodge+Hundsbachstra%C3%9Fe+3+77830+B%C3%BChlertal" target="_blank" rel="noopener noreferrer"><strong>Edelfuchs-Lodge</strong><br>Hundsbachstraße 3<br>77830 Bühlertal</a></p>
+        </div>
+
+        <div class="ueber-block">
+          <p class="text ueber-einleitung">Wir haben ein Zimmer-Kontingent reserviert Stichwort „Hochzeit von Anne &amp; Chris“:</p>
+          <p class="adresse"><a href="https://www.google.com/maps/search/?api=1&query=Zur+gro%C3%9Fen+Tanne+Unterstmatt+1+77887+B%C3%BChl" target="_blank" rel="noopener noreferrer"><strong>Zur großen Tanne</strong><br>Unterstmatt 1<br>77887 Bühl</a></p>
+        </div>
+
+        <div class="ueber-block">
+          <p class="text ueber-einleitung">Für die Rustikalen unter euch:</p>
+          <p class="adresse stichwort">Camping auf dem Parkplatz ist erlaubt :)</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <script>
     (function () {
       var STORAGE_KEY = 'wedding_guest';
-      // Erwarteter SHA-256-Hash (Secret nicht im Quelltext)
       var EXPECTED_HASH = 'afd1a8fffb87f7a091c924e0b851f41be19d55450cf7946a5f03cc02221b6481';
 
       var overlay = document.getElementById('pass-overlay');
-      var form = document.getElementById('pass-form');
-      var input = document.getElementById('pass-input');
-      var fehler = document.getElementById('pass-fehler');
+      var passForm = document.getElementById('pass-form');
+      var passInput = document.getElementById('pass-input');
+      var passFehler = document.getElementById('pass-fehler');
 
       function bufferToHex(buffer) {
         return Array.from(new Uint8Array(buffer))
@@ -349,23 +259,37 @@
 
       if (sessionStorage.getItem(STORAGE_KEY) === '1') {
         freigeben();
-        return;
+      } else {
+        passForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          passFehler.classList.remove('sichtbar');
+          var wert = (passInput.value || '').trim().toLowerCase();
+          sha256Hex(wert).then(function (hash) {
+            if (hash === EXPECTED_HASH) {
+              freigeben();
+            } else {
+              passFehler.classList.add('sichtbar');
+              passInput.value = '';
+              passInput.focus();
+            }
+          });
+        });
       }
 
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        fehler.classList.remove('sichtbar');
-        var wert = (input.value || '').trim().toLowerCase();
-        sha256Hex(wert).then(function (hash) {
-          if (hash === EXPECTED_HASH) {
-            freigeben();
-          } else {
-            fehler.classList.add('sichtbar');
-            input.value = '';
-            input.focus();
-          }
+      var rsvpForm = document.getElementById('rsvpForm');
+      var statusEl = document.getElementById('status');
+      if (rsvpForm && statusEl) {
+        rsvpForm.addEventListener('submit', function () {
+          statusEl.textContent = 'Danke! Deine Rückmeldung wurde gespeichert.';
+          statusEl.className = 'erfolg';
+          setTimeout(function () {
+            rsvpForm.reset();
+            document.getElementById('erwachsene').value = 0;
+            document.getElementById('kinder').value = 0;
+            document.getElementById('kleinkinder').value = 0;
+          }, 800);
         });
-      });
+      }
     })();
   </script>
 </body>

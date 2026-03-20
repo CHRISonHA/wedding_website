@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f8f6f2"/>
+  <circle cx="600" cy="320" r="118" fill="none" stroke="#a0826d" stroke-width="2.5" opacity="0.45"/>
+  <circle cx="600" cy="320" r="108" fill="none" stroke="#8b7355" stroke-width="1" opacity="0.25"/>
+  <!-- Eukalyptus-Zweig (abstrakt) -->
+  <g fill="none" stroke="#7a8f7e" stroke-width="1.4" stroke-linecap="round" opacity="0.85">
+    <path d="M520 420 Q540 360 560 300 Q585 220 620 150"/>
+    <path d="M555 340 Q575 300 595 250"/>
+    <path d="M575 380 Q600 320 625 260"/>
+  </g>
+  <g fill="#7a8f7e" opacity="0.65">
+    <ellipse cx="548" cy="388" rx="14" ry="5" transform="rotate(-42 548 388)"/>
+    <ellipse cx="572" cy="328" rx="16" ry="5" transform="rotate(-35 572 328)"/>
+    <ellipse cx="598" cy="268" rx="17" ry="5" transform="rotate(-30 598 268)"/>
+    <ellipse cx="628" cy="208" rx="15" ry="5" transform="rotate(-25 628 208)"/>
+    <ellipse cx="538" cy="350" rx="12" ry="4" transform="rotate(-50 538 350)"/>
+    <ellipse cx="612" cy="232" rx="14" ry="5" transform="rotate(-28 612 232)"/>
+  </g>
+  <!-- Schleierkraut: kleine Punkte -->
+  <g fill="#c5cbc3" opacity="0.5">
+    <circle cx="480" cy="200" r="2"/>
+    <circle cx="510" cy="180" r="1.5"/>
+    <circle cx="720" cy="240" r="2"/>
+    <circle cx="690" cy="200" r="1.5"/>
+    <circle cx="750" cy="280" r="2"/>
+    <circle cx="450" cy="320" r="1.5"/>
+    <circle cx="680" cy="420" r="2"/>
+  </g>
+</svg>

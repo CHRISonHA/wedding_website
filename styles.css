@@ -1,0 +1,890 @@
+/* Hochzeit Anne & Chris – Einladungsvorlage: Creme, Eukalyptus-Sage, Playfair + Great Vibes */
+
+:root {
+  --bg-page: #f8f6f2;
+  --beige: #f9f9f7;
+  --beige-dunkel: #e8e8e4;
+  --beige-rgb: 249, 249, 247;
+  --divider: #d6d0c6;
+  --body-muted: #5c5852;
+  --sage: #7a9b92;
+  --sage-dunkel: #556d66;
+  --text: #2d2d2d;
+  --text-hell: #5c5c5c;
+  --holz: #8b7355;
+  --holz-hell: #a0826d;
+  --sage-soft: rgba(122, 155, 146, 0.12);
+  --gold: #c4a574;
+  --gold-soft: rgba(196, 165, 116, 0.45);
+  --font-invite-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --label-muted: #9a948c;
+  --meta-muted: #6b665f;
+  --timeline-muted: #7a756d;
+  --card-shadow:
+    0 0 0 1px rgba(45, 45, 45, 0.06),
+    0 18px 42px rgba(45, 45, 45, 0.07);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  color: var(--text);
+  background: var(--beige);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  line-height: 1.6;
+}
+
+body.page-rsvp {
+  justify-content: flex-start;
+}
+
+/* Startseite: minimalistische Einladung (hell, viel Weißraum – vgl. Aquarell-Greenery-Karten) */
+body.einladung-minimal {
+  background: var(--beige);
+  color: var(--text);
+}
+
+.karte {
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  background: var(--beige);
+  position: relative;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+.karte--narrow {
+  max-width: 420px;
+  padding: 2rem 1.5rem;
+  box-shadow: var(--card-shadow);
+}
+
+.karte .script {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  color: var(--text);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.karte .sans {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--text-hell);
+  margin: 0.25rem 0 0;
+}
+
+.karte .block-top {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.karte .block-top .blatt {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 64px;
+  height: 52px;
+  opacity: 0.65;
+}
+
+.karte .block-mitte {
+  margin: 2rem 0;
+}
+
+.karte .block-unten {
+  margin-top: 2rem;
+  position: relative;
+}
+
+.karte .block-unten .blatt {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 84px;
+  height: 68px;
+  opacity: 0.65;
+  transform: scale(-1, 1);
+}
+
+.holz-ring {
+  width: 72px;
+  height: 72px;
+  margin: 1.5rem auto 0;
+  border: 2px solid rgba(139, 115, 85, 0.35);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.text {
+  font-size: 0.9rem;
+  margin: 1.25rem auto;
+  max-width: 38ch;
+  color: var(--text-hell);
+}
+
+.details {
+  margin-top: 2.5rem;
+  padding: 2rem 1.5rem;
+  background: var(--sage-soft);
+  border-radius: 6px;
+  text-align: center;
+  border: 1px solid rgba(139, 115, 85, 0.12);
+}
+
+.details .script {
+  font-size: 1.5rem;
+}
+
+.details .sans {
+  margin-bottom: 1rem;
+}
+
+.details p {
+  margin: 0.4rem 0;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+.details a {
+  color: var(--sage-dunkel);
+  text-decoration: none;
+  border-bottom: 1px solid var(--sage);
+}
+
+.details a:hover {
+  color: var(--sage);
+}
+
+.datum {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--sage-dunkel);
+}
+
+footer {
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: var(--text-hell);
+}
+
+/* Passwort-Overlay */
+.pass-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--beige);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.pass-overlay.versteckt {
+  display: none;
+}
+
+.pass-form {
+  text-align: center;
+  max-width: 280px;
+}
+
+.pass-form label {
+  display: block;
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+
+.pass-form input {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  border: 1px solid var(--beige-dunkel);
+  border-radius: 4px;
+  background: #fff;
+}
+
+.pass-form input:focus {
+  outline: none;
+  border-color: var(--sage);
+}
+
+.pass-form button {
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--sage);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pass-form button:hover {
+  background: var(--sage-dunkel);
+}
+
+.pass-fehler {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: #a44;
+  display: none;
+}
+
+.pass-fehler.sichtbar {
+  display: block;
+}
+
+/* Unterseiten: Zur Einladung + Menü als Fußzeile (volle Breite, Linie oben) */
+.site-footer {
+  position: relative;
+  z-index: 5;
+  margin: 2rem -2rem -2.5rem -2rem;
+  background: rgba(var(--beige-rgb), 0.96);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--beige-dunkel);
+}
+
+.karte--narrow .site-footer {
+  margin: 2rem -1.5rem -2rem -1.5rem;
+}
+
+.nav-zur-einladung {
+  margin: 0;
+  padding: 0.55rem 1rem 0.45rem;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--beige-dunkel);
+}
+
+.nav-zur-einladung a {
+  color: var(--sage-dunkel);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.nav-zur-einladung a:hover,
+.nav-zur-einladung a:focus {
+  color: var(--holz);
+  border-bottom-color: var(--sage);
+}
+
+.site-footer nav.menu {
+  margin: 0;
+  border-bottom: none;
+  position: static;
+  background: transparent;
+  backdrop-filter: none;
+  padding: 0.65rem 1rem;
+}
+
+.karte--narrow .site-footer nav.menu {
+  margin: 0;
+}
+
+/* Menü: Standard nur noch in Fußzeilen (.site-footer, .einladung-footer) – keine negativen Oberkanten mehr */
+nav.menu {
+  position: relative;
+  z-index: 5;
+  background: rgba(var(--beige-rgb), 0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--beige-dunkel);
+  margin: 0;
+  padding: 0.75rem 1rem;
+}
+
+nav.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 0.45rem 0.85rem;
+}
+
+nav.menu a {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-hell);
+  text-decoration: none;
+  padding: 0.35rem 0;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+
+nav.menu a:hover,
+nav.menu a:focus {
+  color: var(--holz);
+  border-bottom-color: var(--sage);
+}
+
+nav.menu a.aktiv {
+  color: var(--sage-dunkel);
+  border-bottom-color: var(--sage);
+}
+
+/* Ablauf */
+.ablauf-liste {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  text-align: left;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ablauf-liste li {
+  font-size: 0.9rem;
+  color: var(--text-hell);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--beige-dunkel);
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.ablauf-liste li:last-child {
+  border-bottom: none;
+}
+
+.ablauf-liste .uhr {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--sage-dunkel);
+  min-width: 4.5rem;
+}
+
+.ablauf-liste li.open-end {
+  margin-top: 0.75rem;
+  font-style: italic;
+  color: var(--text);
+}
+
+/* Kontakt */
+.kontakt-zeile {
+  font-size: 0.9rem;
+  color: var(--text);
+  margin: 0.35rem 0;
+}
+
+.kontakt-zeile a {
+  color: var(--sage-dunkel);
+  text-decoration: none;
+  border-bottom: 1px solid var(--sage);
+}
+
+.kontakt-zeile a:hover {
+  color: var(--sage);
+}
+
+/* Übernachtung */
+.ueber-block {
+  text-align: center;
+  max-width: 32rem;
+  margin: 1.25rem auto;
+  font-size: 0.9rem;
+  color: var(--text-hell);
+}
+
+.ueber-block .sans {
+  text-align: center;
+}
+
+.ueber-einleitung {
+  font-style: italic;
+}
+
+.adresse {
+  margin: 0.5rem 0 0;
+  line-height: 1.5;
+}
+
+.adresse a {
+  color: var(--sage-dunkel);
+  text-decoration: none;
+  border-bottom: 1px solid var(--sage);
+}
+
+.adresse a:hover {
+  color: var(--sage);
+}
+
+.stichwort {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--sage-dunkel);
+}
+
+/* Rückmeldung */
+.karte--narrow .script {
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  margin: 0 0 0.25rem;
+}
+
+.karte--narrow .sans {
+  margin: 0 0 1.5rem;
+}
+
+.rsvp-form {
+  background: var(--sage-soft);
+  padding: 1.5rem;
+  border-radius: 6px;
+  text-align: left;
+  border: 1px solid rgba(139, 115, 85, 0.1);
+}
+
+.rsvp-form label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text);
+  margin-top: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.rsvp-form label:first-of-type {
+  margin-top: 0;
+}
+
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form textarea {
+  width: 100%;
+  padding: 0.5rem 0.65rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  border: 1px solid var(--beige-dunkel);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--text);
+}
+
+.rsvp-form input:focus,
+.rsvp-form select:focus,
+.rsvp-form textarea:focus {
+  outline: none;
+  border-color: var(--sage);
+}
+
+.rsvp-form input[type="number"] {
+  width: 5rem;
+}
+
+.rsvp-form textarea {
+  min-height: 4rem;
+  resize: vertical;
+}
+
+.rsvp-form button {
+  margin-top: 1.25rem;
+  padding: 0.6rem 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--sage);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.rsvp-form button:hover {
+  background: var(--sage-dunkel);
+}
+
+.rsvp-form button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+#status {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  min-height: 1.5em;
+}
+
+#status.erfolg {
+  color: var(--sage-dunkel);
+}
+
+#status.fehler {
+  color: #a44;
+}
+
+/* Startseite: Einladungskarte (Referenzlayout) */
+.karte--einladung {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 3.25rem 2rem 3.75rem;
+}
+
+/* Einladung: Nav als Fußzeile – volle Breite, Linie oben */
+.karte--einladung nav.menu {
+  margin: 2.25rem -2rem -3.25rem -2rem;
+  border-top: 1px solid var(--beige-dunkel);
+  border-bottom: none;
+}
+
+.karte--einladung.karte--einladung-minimal {
+  max-width: 420px;
+  padding: 3.5rem 1.75rem 3.5rem;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+  overflow: visible;
+}
+
+.karte--einladung.karte--einladung-minimal nav.menu {
+  margin: 2.25rem -1.75rem -3.5rem -1.75rem;
+  background: rgba(255, 255, 255, 0.98);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: none;
+  backdrop-filter: blur(6px);
+}
+
+.einladung-footer {
+  margin: 0;
+}
+
+.karte--einladung.karte--einladung-minimal nav.menu a {
+  color: var(--text-hell);
+  font-weight: 400;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+}
+
+.einladung-hero--ref {
+  position: relative;
+  margin: 0 auto;
+  padding: 3.25rem 0.5rem 2.25rem;
+  min-height: 22rem;
+  max-width: 19rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.einladung-deco--ref-tl {
+  position: absolute;
+  top: -0.35rem;
+  left: -0.75rem;
+  width: min(62%, 230px);
+  height: auto;
+  z-index: 0;
+  opacity: 0.68;
+  pointer-events: none;
+}
+
+.einladung-deco--ref-br {
+  position: absolute;
+  bottom: -0.35rem;
+  right: -0.75rem;
+  width: min(62%, 230px);
+  height: auto;
+  z-index: 0;
+  opacity: 0.68;
+  pointer-events: none;
+}
+
+.invite-ref {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  width: 100%;
+}
+
+.invite-ref__kicker {
+  margin: 0 0 1.25rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--label-muted);
+}
+
+.invite-ref__tagline {
+  margin: 1rem auto 0;
+  max-width: 22rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--body-muted);
+}
+
+.invite-ref__rule {
+  width: 6rem;
+  height: 1px;
+  margin: 1.75rem auto 1.5rem;
+  border: none;
+  background: var(--divider);
+}
+
+.invite-ref__date-long {
+  font-family: var(--font-invite-serif);
+  font-weight: 400;
+  font-size: clamp(1.35rem, 4vw, 1.85rem);
+  letter-spacing: 0.06em;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.35;
+}
+
+.invite-ref__ort {
+  margin: 0.65rem 0 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--meta-muted, #6b665f);
+}
+
+.invite-ref__heading {
+  margin: 0;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.invite-ref__line {
+  font-family: var(--font-invite-serif);
+  font-weight: 500;
+  font-size: clamp(1.85rem, 5.5vw, 2.4rem);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--text);
+  line-height: 1.18;
+}
+
+.invite-ref__und {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  font-size: clamp(1.05rem, 3vw, 1.35rem);
+  color: var(--text);
+  margin: 0.12rem 0 0.2rem;
+  line-height: 1.15;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.invite-ref__rings {
+  margin: 0.45rem auto 0;
+  color: var(--sage-dunkel);
+  opacity: 0.55;
+}
+
+.invite-ref__rings svg {
+  display: block;
+  margin: 0 auto;
+  width: clamp(3.35rem, 10vw, 4.25rem);
+  height: auto;
+}
+
+/* Lodge-Symbol, Schriftzug unten weitgehend ausblenden (Höhe feinjustierbar) */
+.invite-ref__lodge-logo {
+  margin: 1.65rem auto 0.3rem;
+  width: clamp(2rem, 10vw, 3rem);
+  aspect-ratio: 1 / 0.58;
+  overflow: hidden;
+}
+
+.invite-ref__lodge-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.invite-ref__addr {
+  font-family: var(--font-invite-serif);
+  font-weight: 400;
+  font-size: clamp(0.58rem, 1.65vw, 0.68rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-hell);
+  margin: 0.55rem auto 0;
+  line-height: 1.55;
+  max-width: 17rem;
+}
+
+.einladung-deco {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.64;
+  z-index: 0;
+}
+
+.einladung-body {
+  position: relative;
+  z-index: 2;
+  padding-top: 1rem;
+}
+
+/* One-Page: eine scrollbare Seite (Abschnitte untereinander) */
+body.page-onepage {
+  justify-content: flex-start;
+  padding: 0;
+  background: var(--bg-page);
+}
+
+.onepage-main {
+  width: 100%;
+  max-width: 100%;
+}
+
+.section {
+  scroll-margin-top: 0.75rem;
+}
+
+.section--einladung {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem 3rem;
+  box-sizing: border-box;
+}
+
+.onepage-card.karte--einladung {
+  margin: 0 auto;
+}
+
+.section-inner {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  text-align: center;
+}
+
+.section-inner--narrow {
+  max-width: 26rem;
+}
+
+.section-kicker {
+  margin: 0 0 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--label-muted, #9a948c);
+}
+
+.section-title {
+  margin: 0 0 2.5rem;
+  font-family: var(--font-invite-serif);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  color: var(--text);
+}
+
+.section-note {
+  margin: -1.5rem 0 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-hell);
+}
+
+.section--ablauf {
+  padding: 4rem 0 4.5rem;
+}
+
+.section--rsvp {
+  padding: 4rem 0 4.5rem;
+  background: #fff;
+}
+
+.section--rsvp .rsvp-form {
+  background: rgba(122, 155, 146, 0.08);
+}
+
+.section--ueber {
+  padding: 4rem 0 5.5rem;
+}
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  max-width: 22rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.timeline__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--beige-dunkel);
+  font-size: 1.05rem;
+}
+
+.timeline__row--open {
+  border-bottom: none;
+}
+
+.timeline__time {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  color: var(--timeline-muted, #7a756d);
+  flex-shrink: 0;
+}
+
+.timeline__label {
+  font-family: var(--font-invite-serif);
+  text-align: right;
+  color: var(--text);
+}
