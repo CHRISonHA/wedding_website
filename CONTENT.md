@@ -18,6 +18,7 @@ Alle Inhalte sind auf `index.html`; **alte Bookmark-URLs** (Redirect-HTML) nutze
 - **Namen:** Anne & Chris  
 - **Datum:** 28. August 2027 (Anzeige auch als `28 | 08 | 2027` möglich)  
 - **Rückmeldung bis:** 31. Mai 2027  
+- **Tagline (Einladung):** Wir sagen Ja – und laden euch von Herzen ein, mit uns diesen Tag zu feiern!
 
 ## Location
 
