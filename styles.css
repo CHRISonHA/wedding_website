@@ -863,10 +863,10 @@ body.page-onepage {
 }
 
 .timeline__row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 0;
   padding: 0.65rem 0;
   border-bottom: 1px solid var(--beige-dunkel);
   font-size: 1.05rem;
@@ -874,17 +874,26 @@ body.page-onepage {
 
 .timeline__row--open {
   border-bottom: none;
+  grid-template-columns: 1fr;
+}
+
+.timeline__row--open .timeline__label {
+  text-align: center;
 }
 
 .timeline__time {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.9rem;
   color: var(--timeline-muted, #7a756d);
-  flex-shrink: 0;
+  min-width: 0;
+  padding-right: 0.75rem;
+  text-align: right;
 }
 
 .timeline__label {
   font-family: var(--font-invite-serif);
-  text-align: right;
+  min-width: 0;
+  padding-left: 0.75rem;
+  text-align: left;
   color: var(--text);
 }

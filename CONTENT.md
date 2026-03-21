@@ -33,10 +33,9 @@ Alle Inhalte sind auf `index.html`; **alte Bookmark-URLs** (Redirect-HTML) nutze
 | ab 15:00 | Get together |
 | 15:30 | Freie Trauung |
 | 16:15 | Sektempfang |
-| 17:15 | Fotos |
 | 17:30 | Essen |
-| ab 20:00 | Band & DJ |
-| — | Open End |
+| ab 20:00 | Party |
+|  | Open End |
 
 ## Übernachtung
 
