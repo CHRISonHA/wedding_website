@@ -1,0 +1,64 @@
+/* A4-Bogen: 2×2 Karten à A6 (105×148 mm) – A4 Hochformat */
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+html.print-sheet-html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body.print-sheet {
+  margin: 0;
+  padding: 0;
+  min-height: auto;
+  display: grid;
+  grid-template-columns: 105mm 105mm;
+  grid-template-rows: 148mm 148mm;
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.print-sheet__cell {
+  width: 105mm;
+  height: 148mm;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.print-sheet__cell .print-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.print-sheet__cell .print-card__inner {
+  padding: 0.2rem 0.35rem 0;
+  max-height: 100%;
+}
+
+/* Etwas kompakter als Einzel-A6, damit alles in die Kachel passt */
+@media print {
+  html.print-sheet-html {
+    font-size: 112%;
+  }
+}
+
+@media screen {
+  body.print-sheet {
+    padding: 1rem;
+    background: #e8e8e4;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  }
+}

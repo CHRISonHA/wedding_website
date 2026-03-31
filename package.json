@@ -1,0 +1,16 @@
+{
+  "name": "wedding-website-tools",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate:qr": "node scripts/generate-qr.js",
+    "pdf:print-karte": "node scripts/print-karte-pdf.js",
+    "pdf:print-karte-a4": "node scripts/print-karte-a4-pdf.js",
+    "print-karte:build": "npm run generate:qr && npm run pdf:print-karte",
+    "print-karte:build-a4": "npm run generate:qr && npm run pdf:print-karte-a4"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0",
+    "qrcode": "^1.5.4"
+  }
+}

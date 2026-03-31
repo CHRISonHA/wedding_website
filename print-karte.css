@@ -1,0 +1,165 @@
+/* Druckvorlage – weiß, minimalistisch wie Web-Einladung (ohne farbigen Seitenhintergrund) */
+
+/* Farben wie styles.css (Einladung), Druck auf Weiß */
+:root {
+  --print-bg: #ffffff;
+  --text: #2d2d2d;
+  --body-muted: #5c5852;
+  --label-muted: #9a948c;
+  --meta-muted: #6b665f;
+  --rings: #556d66;
+  --font-invite-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Montserrat', system-ui, sans-serif;
+}
+
+@page {
+  size: A6 portrait;
+  margin: 12mm 11mm;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 0.82rem;
+  color: var(--text);
+  background: var(--print-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.print-card {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+  background: transparent;
+}
+
+.print-card__inner {
+  position: relative;
+  padding: 0.35rem 0.25rem 0;
+}
+
+/* Mehr „Zoom“ beim PDF/Druck: größere rem-Basis + engere @page-Ränder oben */
+@media print {
+  html {
+    font-size: 122%;
+  }
+}
+
+.print-card__kicker {
+  margin: 0 0 1.1rem;
+  font-size: 0.58rem;
+  font-weight: 400;
+  letter-spacing: 0.48em;
+  text-transform: uppercase;
+  color: var(--label-muted);
+}
+
+.print-card__heading {
+  margin: 0 0 0.35rem;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.print-card__line {
+  font-family: var(--font-invite-serif);
+  font-weight: 500;
+  font-size: 1.75rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--text);
+  line-height: 1.15;
+}
+
+.print-card__und {
+  display: block;
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: var(--text);
+  margin: 0.1rem 0 0.15rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.print-card__rings {
+  margin: 0.35rem auto 0.65rem;
+  color: var(--rings);
+  opacity: 0.55;
+}
+
+.print-card__rings svg {
+  display: block;
+  margin: 0 auto;
+  width: clamp(2.75rem, 12vw, 3.35rem);
+  height: auto;
+}
+
+/* Wie Fließtext auf der Karte: klein, zurückhaltend, einheitlich mit Passwort/URL */
+.print-card__tagline {
+  margin: 0.35rem auto 0;
+  max-width: 15rem;
+  font-family: var(--font-sans);
+  font-size: 0.58rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.52;
+  letter-spacing: 0.02em;
+  color: var(--body-muted);
+}
+
+.print-card__qr-block {
+  margin: 0.85rem auto 0;
+  padding-top: 0;
+  max-width: 14rem;
+}
+
+.print-card__qr {
+  display: block;
+  margin: 0 auto;
+  width: 88px;
+  height: 88px;
+}
+
+.print-card__password {
+  margin: 0.55rem auto 0.35rem;
+  font-family: var(--font-sans);
+  font-size: 0.58rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--meta-muted);
+}
+
+.print-card__url {
+  margin: 0;
+  font-size: 0.48rem;
+  letter-spacing: 0.04em;
+  color: var(--meta-muted);
+  word-break: break-all;
+}
+
+@media screen {
+  body {
+    min-height: 100vh;
+    padding: 2rem 1rem;
+  }
+}

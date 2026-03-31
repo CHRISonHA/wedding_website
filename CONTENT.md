@@ -2,6 +2,13 @@
 
 Kanonische Texte und technische Werte für die Website. Bei Änderungen hier und in `index.html` / `styles.css` synchron halten.
 
+## Physische Einladungskarte (Druck)
+
+- **Website-Link (QR + Kurz-URL):** `https://www.hochzeit-anne-und-chris.top/` (auf der Druckkarte nur Kurz: `hochzeit-anne-und-chris.top` ohne „www.“)
+- **Auf der Karte:** Kicker, Namen, Ringe, Tagline (*„Wir sagen Ja …“* wie auf der Website), QR, **Passwort-Hinweis** für die Seite, Kurz-URL – Datum/Ort nur online.
+- **Dateien:** `print-karte.html`, `print-karte.css`, `print-karte.pdf`; optional **A4-Bogen** `print-karte-a4.html`, `print-karte-a4.css`, `print-karte-a4.pdf` (4× Karte auf einer A4-Seite)
+- **Neuerstellung PDF/QR:** `npm run print-karte:build` bzw. `npm run print-karte:build-a4` (siehe README)
+
 ## One-Page-Anker (Hash-Navigation)
 
 Alle Inhalte sind auf `index.html`; **alte Bookmark-URLs** (Redirect-HTML) nutzen dieselben Anker:

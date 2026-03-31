@@ -78,6 +78,7 @@ Laden über Google Fonts (siehe `index.html` / Unterseiten).
 | **Navigation** | `.menu` / `.site-footer`: kleine Uppercase-Links, dezente Letter-Spacing. |
 | **Formular Rückmeldung** | Struktur und **POST-Ziel** nicht ändern ohne Backend-Anpassung (Google Apps Script). |
 | **Passwort-Overlay** | Gleicher Hash auf allen geschützten Seiten; Design: dezent, lesbar. |
+| **Druckvorlage** | [`print-karte.html`](print-karte.html) / [`print-karte.css`](print-karte.css): eine Karte A6 → [`print-karte.pdf`](print-karte.pdf). **A4-Bogen** [`print-karte-a4.html`](print-karte-a4.html) + [`print-karte-a4.css`](print-karte-a4.css): 2×2 gleiche Karten auf **A4 Hochformat** → [`print-karte-a4.pdf`](print-karte-a4.pdf). Inhalt: Kicker, Namen, Ringe, Tagline, QR, Passwort, Domain (ohne „www.“); ohne Botanik-Dekor. |
 
 ---
 
