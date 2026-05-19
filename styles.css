@@ -439,6 +439,10 @@ nav.menu a.aktiv {
   line-height: 1.5;
 }
 
+.ueber-block .adresse + .adresse {
+  margin-top: 1.5rem;
+}
+
 .adresse a {
   color: var(--sage-dunkel);
   text-decoration: none;
@@ -508,6 +512,38 @@ nav.menu a.aktiv {
 
 .rsvp-form input[type="number"] {
   width: 5rem;
+}
+
+.rsvp-form__counts {
+  margin-top: 1rem;
+}
+
+.rsvp-form__counts-lead {
+  margin: 0 0 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.rsvp-form__count-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.65rem;
+}
+
+.rsvp-form__count-row:first-child {
+  margin-top: 0;
+}
+
+.rsvp-form__count-row label {
+  margin: 0;
+  flex: 1;
+}
+
+.rsvp-form__count-row input[type="number"] {
+  flex-shrink: 0;
 }
 
 .rsvp-form textarea {

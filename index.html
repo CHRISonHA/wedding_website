@@ -158,11 +158,11 @@
         <p class="section-kicker">Ablauf</p>
         <h2 class="section-title" id="ablauf-title">Unser Tag</h2>
         <ul class="timeline" role="list">
-          <li class="timeline__row"><span class="timeline__time">ab 15:00</span><span class="timeline__label">Get together</span></li>
+          <li class="timeline__row"><span class="timeline__time">15:00</span><span class="timeline__label">Get together</span></li>
           <li class="timeline__row"><span class="timeline__time">15:30</span><span class="timeline__label">Freie Trauung</span></li>
           <li class="timeline__row"><span class="timeline__time">16:15</span><span class="timeline__label">Sektempfang</span></li>
           <li class="timeline__row"><span class="timeline__time">17:30</span><span class="timeline__label">Essen</span></li>
-          <li class="timeline__row"><span class="timeline__time">ab 20:00</span><span class="timeline__label">Party</span></li>
+          <li class="timeline__row"><span class="timeline__time">ab 21:00</span><span class="timeline__label">Party</span></li>
           <li class="timeline__row timeline__row--open"><span class="timeline__label">Open End</span></li>
         </ul>
       </div>
@@ -183,18 +183,25 @@
           <label for="zusage">Ich komme …</label>
           <select id="zusage" name="zusage" required>
             <option value="">Bitte wählen</option>
-            <option value="selbstverständlich zu Eurer Hochzeit!">selbstverständlich zu Eurer Hochzeit!</option>
-            <option value="leider nicht, aber habe eine besonders gute Entschuldigung :(">leider nicht, aber habe eine besonders gute Entschuldigung :(</option>
+            <option value="selbstverständlich zu Eurer Hochzeit!">selbstverständlich!</option>
+            <option value="leider nicht, aber habe eine besonders gute Entschuldigung :(">leider nicht :(</option>
           </select>
 
-          <label for="erwachsene">Anzahl Erwachsene (ab 16 Jahre)</label>
-          <input type="number" id="erwachsene" name="erwachsene" min="0" value="0" required>
-
-          <label for="kinder">Anzahl Kinder (5–15 Jahre)</label>
-          <input type="number" id="kinder" name="kinder" min="0" value="0">
-
-          <label for="kleinkinder">Anzahl kleine Kinder (bis 4 Jahre)</label>
-          <input type="number" id="kleinkinder" name="kleinkinder" min="0" value="0">
+          <div class="rsvp-form__counts">
+            <p class="rsvp-form__counts-lead">Wir sind …</p>
+            <div class="rsvp-form__count-row">
+              <input type="number" id="erwachsene" name="erwachsene" min="0" value="0" required>
+              <label for="erwachsene">Erwachsene (ab 16 Jahre)</label>
+            </div>
+            <div class="rsvp-form__count-row">
+              <input type="number" id="kinder" name="kinder" min="0" value="0">
+              <label for="kinder">Kinder (6–15 Jahre)</label>
+            </div>
+            <div class="rsvp-form__count-row">
+              <input type="number" id="kleinkinder" name="kleinkinder" min="0" value="0">
+              <label for="kleinkinder">Kleinkinder (bis 5 Jahre)</label>
+            </div>
+          </div>
 
           <label for="nachricht">Nachricht</label>
           <textarea id="nachricht" name="nachricht"></textarea>
@@ -208,22 +215,40 @@
     <!-- Unterkünfte (Anker: #uebernachtung, Redirects bleiben gültig) -->
     <section id="uebernachtung" class="section section--ueber" aria-labelledby="ueber-title">
       <div class="section-inner">
-        <p class="section-kicker">Unterkünfte</p>
+        <p class="section-kicker">Übernachtung</p>
         <h2 class="section-title" id="ueber-title">Unterkünfte in der Nähe</h2>
 
         <div class="ueber-block">
           <p class="text ueber-einleitung">Unsere Gäste mit kleinen Kindern laden wir ein, direkt in der Location zu übernachten:</p>
-          <p class="adresse"><a href="https://www.google.com/maps/search/?api=1&query=Edelfuchs-Lodge+Hundsbachstra%C3%9Fe+3+77830+B%C3%BChlertal" target="_blank" rel="noopener noreferrer"><strong>Edelfuchs-Lodge</strong><br>Hundsbachstraße 3<br>77830 Bühlertal</a></p>
+          <p class="adresse">
+            <a href="https://edelfuchs-lodge.de/" target="_blank" rel="noopener noreferrer"><strong>Edelfuchs-Lodge</strong></a><br>
+            Hundsbachstraße 3<br>
+            77830 Bühlertal
+          </p>
         </div>
 
         <div class="ueber-block">
-          <p class="text ueber-einleitung">Wir haben ein Zimmer-Kontingent reserviert Stichwort „Hochzeit von Anne &amp; Chris“:</p>
-          <p class="adresse"><a href="https://www.google.com/maps/search/?api=1&query=Zur+gro%C3%9Fen+Tanne+Unterstmatt+1+77887+B%C3%BChl" target="_blank" rel="noopener noreferrer"><strong>Zur großen Tanne</strong><br>Unterstmatt 1<br>77887 Bühl</a></p>
+          <p class="text ueber-einleitung">Kontaktiert uns bitte, um die Zimmerbelegung in der Edelfuchs-Lodge abzustimmen.</p> Weitere Unterkünfte in der Nähe:</p>
+          <p class="adresse">
+            <a href="https://www.zurgrossentanne.de/" target="_blank" rel="noopener noreferrer"><strong>Zur großen Tanne</strong></a><br>
+            Unterstmatt 1<br>
+            77887 Bühl
+          </p>
+          <p class="adresse">
+            <a href="http://www.hochkopf.de/" target="_blank" rel="noopener noreferrer"><strong>Hochkopfstub</strong></a><br>
+            Raue Halde 6<br>
+            77815 Bühl-Unterstmatt
+          </p>
+          <p class="adresse">
+            <a href="https://bergwaldhuette.info/" target="_blank" rel="noopener noreferrer"><strong>Bergwaldhütte Sand</strong></a><br>
+            Am Stadtwald 2a<br>
+            77815 Bühl
+          </p>
         </div>
 
         <div class="ueber-block">
           <p class="text ueber-einleitung">Für die Rustikalen unter euch:</p>
-          <p class="adresse stichwort">Camping auf dem Parkplatz ist erlaubt :)</p>
+          <p class="adresse stichwort"> Vor der Location gibt viel Platz, um einen Camper abzustellen :)</p>
         </div>
       </div>
     </section>

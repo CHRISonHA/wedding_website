@@ -46,9 +46,9 @@ Alle Inhalte sind auf `index.html`; **alte Bookmark-URLs** (Redirect-HTML) nutze
 
 ## Übernachtung
 
-- Lodge vor Ort (siehe Adresse oben).  
-- Zimmerkontingent: **Zur großen Tanne**, Unterstmatt 1, 77887 Bühl (Stichwort „Hochzeit von Anne & Chris“).  
-- Camping auf dem Parkplatz möglich.  
+- **Edelfuchs-Lodge** (Location, besonders für Gäste mit kleinen Kindern): [edelfuchs-lodge.de](https://edelfuchs-lodge.de/) · Hundsbachstraße 3, 77830 Bühlertal  
+- Weitere Unterkünfte: [Zur großen Tanne](https://www.zurgrossentanne.de/) (Unterstmatt 1, 77887 Bühl), [Hochkopfstub](http://www.hochkopf.de/) (Raue Halde 6, 77815 Bühl-Unterstmatt), [Bergwaldhütte Sand](https://bergwaldhuette.info/) (Am Stadtwald 2a, 77815 Bühl)  
+- Camper auf dem Parkplatz möglich.  
 
 ## Rückmeldung (Google Apps Script)
 
