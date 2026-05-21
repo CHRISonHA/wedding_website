@@ -1,20 +1,29 @@
-/* Druckvorlage – weiß, minimalistisch wie Web-Einladung (ohne farbigen Seitenhintergrund) */
+/* Druckvorlage – Layout identisch in Browser-Vorschau und PDF (Playwright = Screen + A6-Viewport) */
 
-/* Farben wie styles.css (Einladung), Druck auf Weiß */
 :root {
   --print-bg: #ffffff;
   --text: #2d2d2d;
   --body-muted: #5c5852;
   --label-muted: #9a948c;
   --meta-muted: #6b665f;
+  --divider: #d6d0c6;
   --rings: #556d66;
   --font-invite-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
   --font-sans: 'Montserrat', system-ui, sans-serif;
+  --print-card-w: 105mm;
+  --print-card-h: 148mm;
+  --print-content-shift-x: -1.4cm;
+  --print-content-shift-y: 1.55cm;
+  --print-pad-top: 5mm;
+  --print-pad-right: 12mm;
+  --print-pad-bottom: 10mm;
+  --print-pad-left: 12mm;
+  --print-deco-right: 1.7cm;
 }
 
 @page {
-  size: A6 portrait;
-  margin: 12mm 11mm;
+  size: 105mm 148mm;
+  margin: 0;
 }
 
 * {
@@ -28,50 +37,194 @@ html {
 
 body {
   margin: 0;
-  min-height: 100vh;
   font-family: var(--font-sans);
   font-weight: 300;
   font-size: 0.82rem;
   color: var(--text);
   background: var(--print-bg);
+}
+
+/* Einzelkarte (print-karte.html) – feste A6-Maße */
+body:not(.print-sheet) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 0;
+  justify-content: flex-start;
 }
 
-.print-card {
+body:not(.print-sheet) .print-card {
   position: relative;
-  width: 100%;
-  max-width: 100%;
+  width: var(--print-card-w);
+  height: var(--print-card-h);
+  max-width: var(--print-card-w);
+  min-height: var(--print-card-h);
+  padding: var(--print-pad-top) var(--print-pad-right) var(--print-pad-bottom) var(--print-pad-left);
   text-align: center;
   background: transparent;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+.print-card__gypsophila {
+  position: absolute;
+  right: calc(var(--print-deco-right) - 45mm);
+  top: 0;
+  width: 82mm;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.print-card__gypsophila-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top center;
+  opacity: 0.48;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.print-card__slit {
+  position: absolute;
+  right: 2mm;
+  width: 8mm;
+  height: 0;
+  border-top: 0.12mm dashed rgba(122, 143, 134, 0.45);
+}
+
+.print-card__slit--upper {
+  top: 52%;
+}
+
+.print-card__slit--lower {
+  top: 78%;
 }
 
 .print-card__inner {
   position: relative;
-  padding: 0.35rem 0.25rem 0;
+  z-index: 1;
+  width: 100%;
+  padding: 0;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
-/* Mehr „Zoom“ beim PDF/Druck: größere rem-Basis + engere @page-Ränder oben */
-@media print {
-  html {
-    font-size: 122%;
-  }
+.print-card__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 0;
+}
+
+.print-card__block {
+  width: 100%;
+}
+
+.print-card__block--intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(var(--print-content-shift-x), var(--print-content-shift-y));
+}
+
+.print-card__block--intro .print-card__heading {
+  margin-top: -0.35cm;
+  gap: 0.22rem;
+}
+
+.print-card__block--intro .print-card__line {
+  font-size: 2.12rem;
+}
+
+.print-card__block--intro .print-card__und {
+  font-size: 1.08rem;
+  margin: 0;
+}
+
+.print-card__block--intro .print-card__rings {
+  margin-top: 0.85rem;
+}
+
+.print-card__block--intro .print-card__rings svg {
+  width: 4rem;
+  height: auto;
+}
+
+.print-card__block--intro .print-card__tagline {
+  margin-top: 2rem;
+  font-size: 0.7rem;
+  max-width: 15rem;
+}
+
+.print-card__rule {
+  width: 4.5rem;
+  height: 1px;
+  margin: 1.85rem auto 0;
+  border: none;
+  background: var(--divider);
+}
+
+.print-card__date {
+  margin: 1.85rem 0 0;
+  font-family: var(--font-invite-serif);
+  font-weight: 400;
+  font-size: 1.22rem;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.print-card__block--qr {
+  margin-top: auto;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.print-card__qr-row {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.45rem 0.4rem;
+}
+
+.print-card__qr-meta {
+  margin-left: -4mm;
+  text-align: left;
+  max-width: 10.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  font-weight: 300;
+  line-height: 1.75;
+  letter-spacing: 0.03em;
+  color: var(--body-muted);
+}
+
+.print-card__qr-meta p {
+  margin: 0;
 }
 
 .print-card__kicker {
-  margin: 0 0 1.1rem;
+  margin: 0 0 1.45rem;
   font-size: 0.58rem;
   font-weight: 400;
-  letter-spacing: 0.48em;
+  letter-spacing: 0.62em;
   text-transform: uppercase;
   color: var(--label-muted);
+  text-align: center;
 }
 
 .print-card__heading {
-  margin: 0 0 0.35rem;
+  margin: 0;
   font-weight: 400;
   display: flex;
   flex-direction: column;
@@ -82,27 +235,27 @@ body {
 .print-card__line {
   font-family: var(--font-invite-serif);
   font-weight: 500;
-  font-size: 1.75rem;
+  font-size: 1.92rem;
   letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--text);
-  line-height: 1.15;
+  line-height: 1.12;
 }
 
 .print-card__und {
   display: block;
   font-family: 'Great Vibes', cursive;
   font-weight: 400;
-  font-size: 1.2rem;
-  color: var(--text);
-  margin: 0.1rem 0 0.15rem;
-  line-height: 1.2;
-  letter-spacing: 0.02em;
+  font-size: 0.95rem;
+  color: var(--body-muted);
+  margin: 0.08rem 0 0.12rem;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
   text-transform: none;
 }
 
 .print-card__rings {
-  margin: 0.35rem auto 0.65rem;
+  margin: 0.4rem auto 0;
   color: var(--rings);
   opacity: 0.55;
 }
@@ -110,14 +263,13 @@ body {
 .print-card__rings svg {
   display: block;
   margin: 0 auto;
-  width: clamp(2.75rem, 12vw, 3.35rem);
+  width: 4rem;
   height: auto;
 }
 
-/* Wie Fließtext auf der Karte: klein, zurückhaltend, einheitlich mit Passwort/URL */
 .print-card__tagline {
-  margin: 0.35rem auto 0;
-  max-width: 15rem;
+  margin: 0.9rem auto 0;
+  max-width: 13.5rem;
   font-family: var(--font-sans);
   font-size: 0.58rem;
   font-weight: 300;
@@ -127,39 +279,41 @@ body {
   color: var(--body-muted);
 }
 
-.print-card__qr-block {
-  margin: 0.85rem auto 0;
-  padding-top: 0;
-  max-width: 14rem;
-}
-
 .print-card__qr {
   display: block;
-  margin: 0 auto;
-  width: 88px;
-  height: 88px;
+  margin: 0 0 0 2mm;
+  flex-shrink: 0;
+  width: 58px;
+  height: 58px;
 }
 
-.print-card__password {
-  margin: 0.55rem auto 0.35rem;
-  font-family: var(--font-sans);
-  font-size: 0.58rem;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  color: var(--meta-muted);
+.print-card__qr-lead {
+  margin-bottom: 0.6rem;
 }
 
 .print-card__url {
-  margin: 0;
-  font-size: 0.48rem;
-  letter-spacing: 0.04em;
-  color: var(--meta-muted);
   word-break: break-all;
 }
 
+.print-card__password {
+  margin-top: 1.25rem;
+  color: var(--label-muted);
+}
+
 @media screen {
-  body {
+  body:not(.print-sheet) {
     min-height: 100vh;
-    padding: 2rem 1rem;
+    padding: 2rem 1rem 3rem;
+  }
+
+  body:not(.print-sheet) .print-card {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  }
+}
+
+@media print {
+  body:not(.print-sheet) {
+    min-height: auto;
+    padding: 0;
   }
 }
