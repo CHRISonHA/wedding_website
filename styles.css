@@ -475,6 +475,17 @@ nav.menu a.aktiv {
   border-radius: 6px;
   text-align: left;
   border: 1px solid rgba(139, 115, 85, 0.1);
+  position: relative;
+}
+
+/* Honeypot: für Menschen unsichtbar, Bots füllen es oft aus */
+.rsvp-form .hp-field {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .rsvp-form label {

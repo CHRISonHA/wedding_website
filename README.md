@@ -15,6 +15,7 @@ Zentrale Fakten, Ablauf, Location, RSVP-Endpoint und Passwort-Hinweis: [`CONTENT
 - **HTML/CSS:** [`print-karte.html`](print-karte.html) + [`print-karte.css`](print-karte.css) – minimalistisch, gleiche Farb-/Typo-Welt wie die Website, QR zur Hochzeitsseite.
 - **PDF:** [`print-karte.pdf`](print-karte.pdf) – für Druck oder Versand; neu erzeugen nach Layout- oder Textänderungen (siehe unten).
 - **QR-Bild:** [`images/qr-hochzeit-anne-chris.png`](images/qr-hochzeit-anne-chris.png) – Ziel-URL `https://www.hochzeit-anne-und-chris.top/`
+- **QR-Vektor:** [`images/qr-hochzeit-anne-chris.svg`](images/qr-hochzeit-anne-chris.svg) – gleicher Code als SVG (druck- und layouttauglich)
 
 **PDF und QR neu erzeugen** (einmal `npm install` und `npx playwright install chromium` im Projektordner):
 
@@ -30,12 +31,19 @@ Erzeugt zuerst das QR-PNG, dann `print-karte.pdf` per Playwright (Chromium). Alt
 - **Format:** Eine **A4-Seite im Hochformat** mit **vier** identischen Karten im Raster – jede Kachel entspricht **A6** (105×148 mm), passend zum direkten Druck und anschließendem Zuschneiden. *(A4 Querformat würde für vier klassische A6-Karten im Hochformat nicht passen.)*
 - **Erzeugen:** `npm run print-karte:build-a4` (QR + `print-karte-a4.pdf`)
 
+### Foto-Karte (schlicht, zentraler QR)
+
+- **Dateien:** [`print-karte-foto.html`](print-karte-foto.html), [`print-karte-foto.css`](print-karte-foto.css), Foto [`images/print-karte-foto.jpg`](images/print-karte-foto.jpg), PDF [`print-karte-foto.pdf`](print-karte-foto.pdf)
+- **Layout:** Vollflächiges Bergfoto, QR-Code mittig auf weißem Panel, darunter Kurz-URL und Passwort.
+- **Erzeugen:** `npm run print-karte:build-foto` (QR + `print-karte-foto.pdf`)
+
 ## Anpassen
 
 Inhaltliche Texte und Links stehen in den jeweiligen HTML-Dateien. Die **Farbwelt** (Eukalyptus, Kerzenlicht, Holzakzente) ist zentral in [`styles.css`](styles.css) über CSS-Variablen (`:root`) definiert.
 
 - Rückmeldefrist: Text auf der Startseite im Bereich „weitere Details“ (`index.html`).
 - **Passwort-Hash** für alle geschützten Seiten: `EXPECTED_HASH` in jeder HTML-Datei mit Passwort-Skript (gleicher Wert).
+- **RSVP / Spam-Schutz:** Formular in `index.html`; Server-Logik in [`apps-script/rsvp.gs`](apps-script/rsvp.gs) (in Google Apps Script einspielen und Web-App neu bereitstellen).
 
 ## Passwortschutz
 

@@ -176,35 +176,42 @@
         <p class="section-note">Bitte antwortet bis zum <strong>31. Mai 2027</strong>.</p>
 
         <iframe name="rsvpFrame" id="rsvpFrame" title="Rückmeldung" hidden></iframe>
-        <form id="rsvpForm" class="rsvp-form" method="post" target="rsvpFrame" action="https://script.google.com/macros/s/AKfycbzn_IMn5k86cYEVQjtGQzplAaSQHQ6B3rtGOBcUPdHaQYramZpHMh0_sN1_GnCYyvTQXg/exec">
+        <form id="rsvpForm" class="rsvp-form" method="post" target="rsvpFrame" action="https://script.google.com/macros/s/AKfycbyogpoVT_D8tg5QihPhFwaKOkUnzY_RECeJv09moBRFcXKTnCKHnQlNC6QK-WM3RDCwDg/exec" autocomplete="on">
+          <!-- Spam-Schutz: Token muss zu apps-script/rsvp.gs passen; nach Script-Update Deployment aktualisieren -->
+          <input type="hidden" name="rsvp_token" value="0cZNUOQhYy1FFluoQ0azMwDu">
+          <div class="hp-field" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" value="" tabindex="-1" autocomplete="off">
+          </div>
+
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" required>
+          <input type="text" id="name" name="name" required maxlength="120">
 
           <label for="zusage">Ich komme …</label>
           <select id="zusage" name="zusage" required>
             <option value="">Bitte wählen</option>
             <option value="Ja - selbstverständlich!">Ja - selbstverständlich!</option>
-            <option value="Neinleider nicht :(">Nein - leider nicht :(</option>
+            <option value="Nein - leider nicht :(">Nein - leider nicht :(</option>
           </select>
 
           <div class="rsvp-form__counts">
             <p class="rsvp-form__counts-lead">Wir sind …</p>
             <div class="rsvp-form__count-row">
-              <input type="number" id="erwachsene" name="erwachsene" min="0" value="0" required>
+              <input type="number" id="erwachsene" name="erwachsene" min="1" max="20" value="1" required>
               <label for="erwachsene">Erwachsene (ab 16 Jahre)</label>
             </div>
             <div class="rsvp-form__count-row">
-              <input type="number" id="kinder" name="kinder" min="0" value="0">
+              <input type="number" id="kinder" name="kinder" min="0" max="20" value="0">
               <label for="kinder">Kinder (6–15 Jahre)</label>
             </div>
             <div class="rsvp-form__count-row">
-              <input type="number" id="kleinkinder" name="kleinkinder" min="0" value="0">
+              <input type="number" id="kleinkinder" name="kleinkinder" min="0" max="20" value="0">
               <label for="kleinkinder">Kleinkinder (bis 5 Jahre)</label>
             </div>
           </div>
 
           <label for="nachricht">Nachricht</label>
-          <textarea id="nachricht" name="nachricht"></textarea>
+          <textarea id="nachricht" name="nachricht" maxlength="2000"></textarea>
 
           <button type="submit" id="submitBtn">Absenden</button>
         </form>
@@ -308,7 +315,7 @@
           statusEl.className = 'erfolg';
           setTimeout(function () {
             rsvpForm.reset();
-            document.getElementById('erwachsene').value = 0;
+            document.getElementById('erwachsene').value = 1;
             document.getElementById('kinder').value = 0;
             document.getElementById('kleinkinder').value = 0;
           }, 800);
