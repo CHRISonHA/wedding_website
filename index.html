@@ -177,12 +177,9 @@
 
         <iframe name="rsvpFrame" id="rsvpFrame" title="Rückmeldung" hidden></iframe>
         <form id="rsvpForm" class="rsvp-form" method="post" target="rsvpFrame" action="https://script.google.com/macros/s/AKfycbwwtvRbugKJS26pmrL0oAlhoWBaScKjYJRWjdhWc3Mcci7g95uS4eMI9RKtDUJ2DD8OPA/exec" autocomplete="on">
-          <!-- Spam-Schutz: Token muss zu apps-script/rsvp.gs passen; nach Script-Update Deployment aktualisieren -->
+          <!-- Spam-Schutz: Honeypot ohne Label – für Menschen unsichtbar -->
           <input type="hidden" name="rsvp_token" value="0cZNUOQhYy1FFluoQ0azMwDu">
-          <div class="hp-field" aria-hidden="true">
-            <label for="fax_number">Fax</label>
-            <input type="text" id="fax_number" name="fax_number" value="" tabindex="-1" autocomplete="off">
-          </div>
+          <input class="hp-input" type="text" name="fax_number" value="" tabindex="-1" autocomplete="off" aria-hidden="true">
 
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required maxlength="120">
@@ -197,7 +194,7 @@
           <div class="rsvp-form__counts">
             <p class="rsvp-form__counts-lead">Wir sind …</p>
             <div class="rsvp-form__count-row">
-              <input type="number" id="erwachsene" name="erwachsene" min="1" max="20" value="1" required>
+              <input type="number" id="erwachsene" name="erwachsene" min="1" max="20" value="" required>
               <label for="erwachsene">Erwachsene (ab 16 Jahre)</label>
             </div>
             <div class="rsvp-form__count-row">
@@ -325,7 +322,7 @@
           statusEl.className = 'erfolg';
           setTimeout(function () {
             rsvpForm.reset();
-            document.getElementById('erwachsene').value = 1;
+            document.getElementById('erwachsene').value = '';
             document.getElementById('kinder').value = 0;
             document.getElementById('kleinkinder').value = 0;
           }, 800);

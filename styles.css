@@ -478,14 +478,19 @@ nav.menu a.aktiv {
   position: relative;
 }
 
-/* Honeypot: für Menschen unsichtbar, Bots füllen es oft aus */
-.rsvp-form .hp-field {
-  position: absolute;
-  left: -10000px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+/* Honeypot: kein sichtbares Feld – nur für Bots, die alle Inputs füllen */
+.rsvp-form .hp-input {
+  position: absolute !important;
+  left: -10000px !important;
+  top: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
 }
 
 .rsvp-form label {
