@@ -176,12 +176,12 @@
         <p class="section-note">Bitte antwortet bis zum <strong>31. Mai 2027</strong>.</p>
 
         <iframe name="rsvpFrame" id="rsvpFrame" title="Rückmeldung" hidden></iframe>
-        <form id="rsvpForm" class="rsvp-form" method="post" target="rsvpFrame" action="https://script.google.com/macros/s/AKfycbyogpoVT_D8tg5QihPhFwaKOkUnzY_RECeJv09moBRFcXKTnCKHnQlNC6QK-WM3RDCwDg/exec" autocomplete="on">
+        <form id="rsvpForm" class="rsvp-form" method="post" target="rsvpFrame" action="https://script.google.com/macros/s/AKfycbwwtvRbugKJS26pmrL0oAlhoWBaScKjYJRWjdhWc3Mcci7g95uS4eMI9RKtDUJ2DD8OPA/exec" autocomplete="on">
           <!-- Spam-Schutz: Token muss zu apps-script/rsvp.gs passen; nach Script-Update Deployment aktualisieren -->
           <input type="hidden" name="rsvp_token" value="0cZNUOQhYy1FFluoQ0azMwDu">
           <div class="hp-field" aria-hidden="true">
-            <label for="website">Website</label>
-            <input type="text" id="website" name="website" value="" tabindex="-1" autocomplete="off">
+            <label for="fax_number">Fax</label>
+            <input type="text" id="fax_number" name="fax_number" value="" tabindex="-1" autocomplete="off">
           </div>
 
           <label for="name">Name</label>
@@ -310,7 +310,17 @@
       var rsvpForm = document.getElementById('rsvpForm');
       var statusEl = document.getElementById('status');
       if (rsvpForm && statusEl) {
-        rsvpForm.addEventListener('submit', function () {
+        rsvpForm.addEventListener('submit', function (e) {
+          var erwachseneEl = document.getElementById('erwachsene');
+          var erwachsene = Number(erwachseneEl && erwachseneEl.value);
+          if (!isFinite(erwachsene) || erwachsene < 1 || Math.floor(erwachsene) !== erwachsene) {
+            e.preventDefault();
+            statusEl.textContent = 'Bitte mindestens 1 Erwachsenen angeben.';
+            statusEl.className = 'fehler';
+            if (erwachseneEl) erwachseneEl.focus();
+            return;
+          }
+
           statusEl.textContent = 'Danke! Deine Rückmeldung wurde gespeichert.';
           statusEl.className = 'erfolg';
           setTimeout(function () {

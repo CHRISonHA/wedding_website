@@ -52,9 +52,9 @@ Alle Inhalte sind auf `index.html`; **alte Bookmark-URLs** (Redirect-HTML) nutze
 
 ## Rückmeldung (Google Apps Script)
 
-- **Endpoint:** `https://script.google.com/macros/s/AKfycbyogpoVT_D8tg5QihPhFwaKOkUnzY_RECeJv09moBRFcXKTnCKHnQlNC6QK-WM3RDCwDg/exec`  
+- **Endpoint:** `https://script.google.com/macros/s/AKfycbwwtvRbugKJS26pmrL0oAlhoWBaScKjYJRWjdhWc3Mcci7g95uS4eMI9RKtDUJ2DD8OPA/exec`  
 - **Skript-Vorlage:** [`apps-script/rsvp.gs`](apps-script/rsvp.gs) (Honeypot, Token, Validierung, Rate-Limit)  
-- **Felder:** `name`, `zusage`, `erwachsene`, `kinder`, `kleinkinder`, `nachricht`, plus Spam-Schutz `rsvp_token` (hidden) und `website` (Honeypot, leer lassen)  
+- **Felder:** `name`, `zusage`, `erwachsene` (≥ 1), `kinder`, `kleinkinder`, `nachricht`, plus Spam-Schutz `rsvp_token` (hidden) und `fax_number` (Honeypot, leer lassen)  
 - **`zusage` (Werte):** `Ja - selbstverständlich!` · `Nein - leider nicht :(`  
 - **Methode:** POST in verstecktes `iframe` (kein CORS-Problem).  
 - **Nach Script-Änderung:** Web-App-Deployment aktualisieren; Token in `index.html` und `rsvp.gs` synchron halten. Bei anhaltendem Spam neue Deployment-URL erzeugen, alte archivieren, URL hier und in `index.html` ersetzen.  
