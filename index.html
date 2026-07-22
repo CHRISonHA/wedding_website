@@ -194,7 +194,7 @@
           <div class="rsvp-form__counts">
             <p class="rsvp-form__counts-lead">Wir sind …</p>
             <div class="rsvp-form__count-row">
-              <input type="number" id="erwachsene" name="erwachsene" min="1" max="20" value="" required>
+              <input type="number" id="erwachsene" name="erwachsene" min="1" max="20" value="0" required>
               <label for="erwachsene">Erwachsene (ab 16 Jahre)</label>
             </div>
             <div class="rsvp-form__count-row">
@@ -322,7 +322,7 @@
           statusEl.className = 'erfolg';
           setTimeout(function () {
             rsvpForm.reset();
-            document.getElementById('erwachsene').value = '';
+            document.getElementById('erwachsene').value = 0;
             document.getElementById('kinder').value = 0;
             document.getElementById('kleinkinder').value = 0;
           }, 800);
