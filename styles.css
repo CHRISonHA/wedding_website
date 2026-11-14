@@ -904,6 +904,21 @@ body.page-onepage {
   padding: 4rem 0 5.5rem;
 }
 
+.section--schluss {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+  background: #fff;
+}
+
+.ring-gravur {
+  display: block;
+  width: min(16rem, 72vw);
+  height: auto;
+}
+
 .timeline {
   list-style: none;
   margin: 0;
