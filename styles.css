@@ -905,18 +905,52 @@ body.page-onepage {
 }
 
 .section--schluss {
-  min-height: 100vh;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 1.5rem;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: calc(50vh - 78px) 1.5rem;
+  padding: calc(50dvh - 78px) 1.5rem;
   background: #fff;
+}
+
+.schluss-inhalt {
+  position: relative;
 }
 
 .ring-gravur {
   display: block;
-  width: min(16rem, 72vw);
+  width: 250px;
   height: auto;
+  flex-shrink: 0;
+}
+
+/* Text liegt unterhalb der Gravur, ohne deren Zentrierung zu verschieben */
+.schluss-unterschrift {
+  position: absolute;
+  top: calc(100% + 1.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  text-align: center;
+}
+
+.schluss-gruss {
+  margin: 0 0 0.6rem;
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.9rem;
+  color: var(--text);
+}
+
+.schluss-namen {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--label-muted, #9a948c);
 }
 
 .timeline {
